@@ -1,0 +1,67 @@
+.HowToDo-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.HowToDo-container h1 {
+    color: #333;
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.HowToDo_steps {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    background: #f9f9f9;
+    transition: transform 0.3s ease-in-out;
+}
+
+.HowToDo_step:hover {
+    transform: scale(1.05);
+}
+
+.HowToDo_step {
+    width: 20%;
+    text-align: center;
+}
+
+.HowToDo_step h3 {
+    color: #0078d4;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.HowToDo_step p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.step-icon {
+    width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.process-count {
+    display: inline-block;
+    background: #d1d1d1;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.HowToDo_step:hover .process-count {
+    background: #ff6347;
+    color: #fff;
+}

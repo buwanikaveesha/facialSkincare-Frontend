@@ -9,9 +9,7 @@ const Home = () => {
     return (
         <div>
             <Navbar />
-            <div className="home-content">
-                
-            </div>
+
         </div>
     );
 };
