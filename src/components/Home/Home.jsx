@@ -1,21 +1,17 @@
 import React from 'react';
-import "./Home.css";
+import Navbar from '../Navbar/Navbar';
+import './Home.css';
 
 const Home = () => {
 
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        window.location.reload();
-    };
+    
 
     return (
-        <div className= "main_container">
-            <nav className= "navbar">
-                <h1>fakebook</h1>
-                <button className= "white_btn_home" onClick={handleLogout}>
-                    Logout
-                </button>
-            </nav>
+        <div>
+            <Navbar />
+            <div className="home-content">
+                
+            </div>
         </div>
     );
 };
