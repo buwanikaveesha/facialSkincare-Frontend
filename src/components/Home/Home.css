@@ -1,0 +1,93 @@
+.skincare-container {
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+    padding: 0;
+    color: #2b2b2b;
+}
+
+.skincare-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    position: static;
+    height: 400px;
+}
+
+.header-text {
+    flex: 1;
+    z-index: 2;
+    text-align: left;
+    color: #ffffff;
+    padding: 60px;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-top: -25px;
+}
+
+.header-text h1 {
+    font-size: 2.5rem;
+    color: #2b2b2b;
+
+}
+
+.analysis-button {
+    background-color: #006400;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+
+.analysis-button:hover {
+    background-color: #004d00;
+}
+
+.header-image {
+    height: 100%;
+    object-fit: cover;
+    object-position: 50%;
+}
+
+.header-image img {
+    background-position: 50%;
+    background-size: cover;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    z-index: -10;
+}
+
+.face-mapping-section {
+    background-color: #ffffff;
+    text-align: center;
+    margin-top: -90px;
+    padding-top: 40px;
+}
+
+.face-mapping-section h2 {
+    font-size: 2rem;
+    color: #2b2b2b;
+    margin-bottom: 5px;
+}
+
+.home_para {
+    font-size: 18px;
+    line-height: 28px;
+    max-width: 808px;
+    margin-left: 350px;
+}
+
+.face-mapping-section a {
+    color: #006400;
+    text-decoration: none;
+}
+
+.face-mapping-section a:hover {
+    text-decoration: underline;
+}

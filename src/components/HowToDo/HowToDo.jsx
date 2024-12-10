@@ -13,7 +13,7 @@ const HowToDo = () => {
             icon: <img src={FocusIcon} alt="Focus Icon" className="step-icon" />,
             title: "Take a photo",
             description:
-                "Keep zoomed at the closest distance (less than 10 cm), keep in focus and center only the skin mark (without hair, wrinkles, and other objects).",
+                "Keep zoomed at the closest distance (less than 10 cm), keep in focus and center only the face.",
         },
         {
             icon: <img src={SendIcon} alt="Send Icon" className="step-icon" />,
