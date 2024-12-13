@@ -18,7 +18,7 @@ const Home = () => {
                     </div>
                     <div className="header-text">
                         <h1>
-                            FacialCure: Skin Analysis <br /> for Personalised <br /> Skincare
+                            FacialCure: Skin Analysis <br /> for Personalised <br /> Facial Skincare
                         </h1>
                         <button className="analysis-button">GET YOUR ANALYSIS</button>
                     </div>
