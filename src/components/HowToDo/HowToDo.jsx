@@ -19,7 +19,7 @@ const HowToDo = () => {
             icon: <img src={SendIcon} alt="Send Icon" className="step-icon" />,
             title: "Identify and send",
             description:
-                "Send your photo to the Artificial Intelligence. The system will analyze it and send you a risk assessment.",
+                "Send your photo to the Artificial Intelligence. The system will analyze it and send you a facial issue assessment.",
         },
         {
             icon: <img src={SaveIcon} alt="Save Icon" className="step-icon" />,

@@ -1,7 +1,9 @@
 import React from 'react';
-import bannerImage from '../../assets/images/banner1.webp';
+import { Link } from 'react-router-dom';
+import bannerImage from '../../assets/images/banner1-new.jpg';
 import Navbar from '../Navbar/Navbar';
 import './Home.css';
+
 
 const Home = () => {
 
@@ -20,7 +22,9 @@ const Home = () => {
                         <h1>
                             FacialCure: Skin Analysis <br /> for Personalised <br /> Facial Skincare
                         </h1>
-                        <button className="analysis-button">GET YOUR ANALYSIS</button>
+                        <Link to="/instructions">
+                            <button className="analysis-button">GET YOUR ANALYSIS</button>
+                        </Link>
                     </div>
                 </header>
 
