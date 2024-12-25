@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import img1 from "../../assets/images/4.png";
 import img3 from "../../assets/images/5.png";
 import img2 from "../../assets/images/6.png";
@@ -6,7 +7,7 @@ import Navbar from '../Navbar/Navbar';
 import "./Instructions.css";
 
 const Instructions = () => {
-    // Define the steps with content and image paths
+
     const steps = [
         {
             title: "Before you start",
@@ -72,7 +73,10 @@ const Instructions = () => {
                     <div className="instruction_arrow right" onClick={goToNextStep}>
                         &gt;
                     </div>
-                    <button className="instruction_cta-button">Got It</button>
+
+                    <Link to="/photoUpload">
+                        <button className="instruction_cta-button">Got It</button>
+                    </Link>
                 </div>
             </div>
         </div>

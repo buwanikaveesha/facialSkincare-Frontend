@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bannerImage from '../../assets/images/banner1-new.jpg';
+import bannerImage from '../../assets/images/banner1.png';
 import Navbar from '../Navbar/Navbar';
 import './Home.css';
 
 
 const Home = () => {
-
-
-
     return (
         <div>
             <Navbar />
@@ -22,12 +19,11 @@ const Home = () => {
                         <h1>
                             FacialCure: Skin Analysis <br /> for Personalised <br /> Facial Skincare
                         </h1>
-                        <Link to="/instructions">
+                        <Link to="/photoUpload">
                             <button className="analysis-button">GET YOUR ANALYSIS</button>
                         </Link>
                     </div>
                 </header>
-
 
                 <section className="face-mapping-section">
                     <h2>What is FacialCure?</h2>
