@@ -19,7 +19,7 @@ const Home = () => {
                         <h1>
                             FacialCure: Skin Analysis <br /> for Personalised <br /> Facial Skincare
                         </h1>
-                        <Link to="/photoUpload">
+                        <Link to="/StartAnalysis">
                             <button className="analysis-button">GET YOUR ANALYSIS</button>
                         </Link>
                     </div>

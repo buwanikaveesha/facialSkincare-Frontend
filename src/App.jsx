@@ -6,9 +6,9 @@ import HowToDo from "./components/HowToDo/HowToDo";
 import Instructions from "./components/Instructions/Instructions";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
-import PhotoUpload from "./components/PhotoUpload/PhotoUpload";
 import Signup from "./components/Signup/Signup";
 import Overlay from "./components/Overlay/Overlay";
+import StartAnalysis from "./components/StartAnalysis/StartAnalysis";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -34,8 +34,8 @@ const App = () => {
         <Route path="/howToDo" element={<HowToDo />} />
         <Route path="/instructions" element={<Instructions />} />
         <Route
-          path="/photoUpload"
-          element={<PhotoUpload onStartAnalysis={handleOpenOverlay} />} // Pass correct prop
+          path="/startAnalysis"
+          element={<StartAnalysis onStartAnalysis={handleOpenOverlay} />}
         />
       </Routes>
     </>

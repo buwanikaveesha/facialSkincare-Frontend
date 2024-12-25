@@ -1,8 +1,8 @@
 import React from "react";
 import HealthyFace from "../../assets/images/healthy face.png";
-import "./PhotoUpload.css";
+import "./StartAnalysis.css";
 
-const PhotoUpload = ({ onStartAnalysis }) => {
+const StartAnalysis = ({ onStartAnalysis }) => {
   return (
     <div className="skin-coach-container">
       <div className="image-section">
@@ -36,4 +36,4 @@ const PhotoUpload = ({ onStartAnalysis }) => {
   );
 };
 
-export default PhotoUpload;
+export default StartAnalysis;
