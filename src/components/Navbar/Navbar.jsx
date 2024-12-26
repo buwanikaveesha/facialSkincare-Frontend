@@ -14,13 +14,15 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <h1>FacialCure</h1>
+        <Link to="/" className="logo-link">
+          <h1>FacialCure</h1>
+        </Link>
       </div>
       <div className="navbar-links">
         <Link to="/">Home</Link>
         <Link to="/features">Features</Link>
         <Link to="/howToDo">How it Works</Link>
-        {/*<Link to="/contact">Contact</Link>*/}
+
       </div>
       <button className="login_home_btn" onClick={handleLogin}>
         Login

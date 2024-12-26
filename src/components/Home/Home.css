@@ -95,3 +95,14 @@ img .header-image {
 .face-mapping-section a:hover {
     text-decoration: underline;
 }
+
+.features-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+}
+
+.how-to-do-section {
+    padding: 50px 20px;
+    background-color: #ffffff;
+}
+

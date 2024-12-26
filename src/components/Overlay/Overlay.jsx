@@ -14,7 +14,7 @@ const Overlay = ({ onCloseOverlay }) => {
   const handleAgreeButtonClick = () => {
 
     onCloseOverlay();
-    navigate("/instructions");
+    navigate("/login");
   };
 
   return (

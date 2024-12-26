@@ -4,7 +4,6 @@ import bannerImage from '../../assets/images/banner1.png';
 import Navbar from '../Navbar/Navbar';
 import './Home.css';
 
-
 const Home = () => {
     return (
         <div>

@@ -9,22 +9,14 @@ import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Signup/Signup";
 import Overlay from "./components/Overlay/Overlay";
 import StartAnalysis from "./components/StartAnalysis/StartAnalysis";
+import PhotoUpload from "./components/PhotoUpload/PhotoUpload";
 
 const App = () => {
   const user = localStorage.getItem("token");
 
-  //manage overlay visibility
-  const [isOverlayVisible, setOverlayVisible] = useState(false);
-
-  // Functions to toggle overlay visibility
-  const handleOpenOverlay = () => setOverlayVisible(true);
-  const handleCloseOverlay = () => setOverlayVisible(false);
 
   return (
     <>
-
-      {isOverlayVisible && <Overlay onCloseOverlay={handleCloseOverlay} />}
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
@@ -33,10 +25,8 @@ const App = () => {
         <Route path="/features" element={<Features />} />
         <Route path="/howToDo" element={<HowToDo />} />
         <Route path="/instructions" element={<Instructions />} />
-        <Route
-          path="/startAnalysis"
-          element={<StartAnalysis onStartAnalysis={handleOpenOverlay} />}
-        />
+        <Route path="/startAnalysis" element={<StartAnalysis />} />
+        <Route path="/photoUpload" element={<PhotoUpload />} />
       </Routes>
     </>
   );
