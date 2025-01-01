@@ -10,6 +10,7 @@ import Signup from "./components/Signup/Signup";
 import Overlay from "./components/Overlay/Overlay";
 import StartAnalysis from "./components/StartAnalysis/StartAnalysis";
 import PhotoUpload from "./components/PhotoUpload/PhotoUpload";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const user = localStorage.getItem("token");
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/instructions" element={<Instructions />} />
         <Route path="/startAnalysis" element={<StartAnalysis />} />
         <Route path="/photoUpload" element={<PhotoUpload />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );
