@@ -1,34 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HealthyFace from "../../assets/images/face2.png";
 import "./PhotoUpload.css";
 import Navbar from "../Navbar/Navbar";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUpload } from '@fortawesome/free-solid-svg-icons';
-import Overlay from "../Overlay/Overlay";  // Import the Overlay component
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import Overlay from "../Overlay/Overlay";
 
 const PhotoUpload = ({ onStartAnalysis }) => {
     const [imagePreview, setImagePreview] = useState(null);
-    const [isOverlayVisible, setIsOverlayVisible] = useState(false); // State to control the overlay visibility
+    const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+    const [hasAgreed, setHasAgreed] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const handleFileUpload = async (event) => {
+    useEffect(() => {
+        // Check for token to determine if logged in
+        const token = localStorage.getItem("token"); // Adjust the key if necessary
+        const agreementStatus = localStorage.getItem("hasAgreed") === "true";
+        setIsLoggedIn(!!token); // If token exists, user is logged in
+        setHasAgreed(agreementStatus);
+    }, []);
+
+    const handleFileUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
-            // Preview image
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result);
-                setIsOverlayVisible(false);  // Hide the overlay once the image is chosen
             };
             reader.readAsDataURL(file);
         }
     };
 
     const openOverlay = () => {
-        setIsOverlayVisible(true);  // Show overlay when the button is clicked
+        setIsOverlayVisible(true);
     };
 
     const closeOverlay = () => {
-        setIsOverlayVisible(false);  // Close overlay
+        setIsOverlayVisible(false);
+    };
+
+    const handleAgree = () => {
+        localStorage.setItem("hasAgreed", "true");
+        setHasAgreed(true);
+        closeOverlay();
+    };
+
+    const handleUploadClick = () => {
+        const token = localStorage.getItem("token"); // Check if token exists
+        const agreementStatus = localStorage.getItem("hasAgreed") === "true";
+
+        // Check if the user is logged in and has agreed to the terms
+        if (!token || !agreementStatus) {
+            alert("You must agree to the terms and be logged in to upload a photo.");
+        } else {
+            // Proceed with the upload
+            document.getElementById("upload-input").click();
+        }
     };
 
     return (
@@ -54,26 +81,54 @@ const PhotoUpload = ({ onStartAnalysis }) => {
                         Add a photo to make a scan. You can upload a photo from your device.
                     </p>
 
-                    <div className="upload-button-wrapper">
-                        <label htmlFor="upload-input" className="upload-button" onClick={openOverlay}>
-                            <FontAwesomeIcon icon={faUpload} className="icon" style={{ marginRight: '8px' }} />
-                            Upload Photo
-                        </label>
+                    <div className="button-group">
+                        <button className="terms-button" onClick={openOverlay}>
+                            <FontAwesomeIcon
+                                icon={faClipboardCheck}
+                                className="icon"
+                                style={{ marginRight: "8px" }}
+                            />
+                            View Terms
+                        </button>
+
+                        {isLoggedIn && hasAgreed ? (
+                            <>
+                                <label htmlFor="upload-input" className="upload-button">
+                                    <FontAwesomeIcon
+                                        icon={faUpload}
+                                        className="icon"
+                                        style={{ marginRight: "8px" }}
+                                    />
+                                    Upload Photo
+                                </label>
+                                <input
+                                    type="file"
+                                    id="upload-input"
+                                    onChange={handleFileUpload}
+                                    accept="image/*"
+                                    className="file-input"
+                                    style={{ display: "none" }}
+                                />
+                            </>
+                        ) : (
+                            <button
+                                className="upload-button"
+                                onClick={handleUploadClick}
+                            >
+                                <FontAwesomeIcon
+                                    icon={faUpload}
+                                    className="icon"
+                                    style={{ marginRight: "8px" }}
+                                />
+                                Upload Photo
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>
 
-            {/* Show overlay if it's visible */}
             {isOverlayVisible && (
-                <Overlay onCloseOverlay={closeOverlay}>
-                    {/* Inside the Overlay, we place the file input */}
-                    <input
-                        type="file"
-                        id="upload-input"
-                        onChange={handleFileUpload}
-                        accept="image/*"
-                    />
-                </Overlay>
+                <Overlay onCloseOverlay={closeOverlay} onAgree={handleAgree} />
             )}
         </div>
     );

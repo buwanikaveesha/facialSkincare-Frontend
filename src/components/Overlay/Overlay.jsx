@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Overlay.css";
 import { AiOutlineClose } from "react-icons/ai";
 
-const Overlay = ({ onCloseOverlay }) => {
+const Overlay = ({ onCloseOverlay, onAgree }) => {
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ const Overlay = ({ onCloseOverlay }) => {
   };
 
   const handleAgreeButtonClick = () => {
-
+    onAgree(); // Save the agreement status
     onCloseOverlay();
     navigate("/login");
   };

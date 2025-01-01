@@ -72,9 +72,9 @@
 
 .upload-button-wrapper {
     margin-top: 20px;
-  }
-  
-  .upload-button {
+}
+
+.upload-button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #00c4cc;
@@ -86,19 +86,38 @@
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease;
-  }
-  
-  .upload-button:hover {
+}
+
+.upload-button:hover {
     background-color: #008f92;
-  }
-  
-  .image-preview {
+}
+
+.image-preview {
     margin-top: 20px;
-  }
-  
-  .image-preview img {
+}
+
+.image-preview img {
     max-width: 300px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
+}
+
+.file-input {
+    display: none;
+}
+
+.terms-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00c4cc;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
