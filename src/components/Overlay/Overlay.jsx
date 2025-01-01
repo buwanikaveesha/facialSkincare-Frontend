@@ -14,7 +14,7 @@ const Overlay = ({ onCloseOverlay, onAgree }) => {
   const handleAgreeButtonClick = () => {
     onAgree(); // Save the agreement status
     onCloseOverlay();
-    navigate("/login");
+    navigate("/photoUpload");
   };
 
   return (
