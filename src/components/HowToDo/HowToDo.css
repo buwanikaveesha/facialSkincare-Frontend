@@ -1,6 +1,10 @@
 .HowToDo-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 1rem;
     font-family: Arial, sans-serif;
-    padding: 20px;
+    height: 500px;
 }
 
 .HowToDo-container h1 {

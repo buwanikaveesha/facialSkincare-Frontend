@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HealthyFace from "../../assets/images/face2.png";
 import "./PhotoUpload.css";
-import Navbar from "../Navbar/Navbar";
+        import Navbar from "../Navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import Overlay from "../Overlay/Overlay";
@@ -14,9 +14,9 @@ const PhotoUpload = ({ onStartAnalysis }) => {
 
     useEffect(() => {
         // Check for token to determine if logged in
-        const token = localStorage.getItem("token"); // Adjust the key if necessary
+        const token = localStorage.getItem("token");
         const agreementStatus = localStorage.getItem("hasAgreed") === "true";
-        setIsLoggedIn(!!token); // If token exists, user is logged in
+        setIsLoggedIn(!!token);
         setHasAgreed(agreementStatus);
     }, []);
 
@@ -46,14 +46,13 @@ const PhotoUpload = ({ onStartAnalysis }) => {
     };
 
     const handleUploadClick = () => {
-        const token = localStorage.getItem("token"); // Check if token exists
+        const token = localStorage.getItem("token");
         const agreementStatus = localStorage.getItem("hasAgreed") === "true";
 
         // Check if the user is logged in and has agreed to the terms
         if (!token || !agreementStatus) {
             alert("You must agree to the terms and be logged in to upload a photo.");
         } else {
-            // Proceed with the upload
             document.getElementById("upload-input").click();
         }
     };
