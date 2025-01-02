@@ -34,11 +34,11 @@ const Navbar = () => {
         <Link to="/features">Features</Link>
         <Link to="/howToDo">How it Works</Link>
       </div>
-      
+
       <div className="navbar-actions">
         {isLoggedIn ? (
           <>
-           <Link to="/profile">
+            <Link to="/accountSettings">
               <FaUserCircle className="profile-icon" />
             </Link>
             <button className="login_home_btn" onClick={handleLogout}>
