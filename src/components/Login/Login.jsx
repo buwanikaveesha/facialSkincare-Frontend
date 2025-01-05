@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import * as jwt_decode from 'jwt-decode';  // Named import for jwt-decode
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
@@ -16,18 +17,45 @@ const Login = () => {
 		try {
 			const url = "http://localhost:3000/api/auth";
 			const { data: res } = await axios.post(url, data);
-			localStorage.setItem("token", res.data);
-			window.location = "/photoUpload";
+			localStorage.setItem("token", res.data); // Store token in localStorage
+			window.location = "/photoUpload"; // Redirect to photo upload page
 		} catch (error) {
 			if (
 				error.response &&
 				error.response.status >= 400 &&
 				error.response.status <= 500
 			) {
-				setError(error.response.data.message);
+				setError(error.response.data.message); // Display error message
 			}
 		}
 	};
+
+	// Check token expiration
+	const checkTokenExpiration = () => {
+		const token = localStorage.getItem("token");
+		if (!token) return false; // No token, user is not authenticated
+
+		try {
+			const decodedToken = jwt_decode.default(token); // Use 'default' to access the default export
+			const currentTime = Date.now() / 1000; // Get current time in seconds
+
+			if (decodedToken.exp < currentTime) {
+				localStorage.removeItem("token"); // Remove expired token
+				window.location = "/login"; // Redirect to login page
+				return false; // Token is expired
+			}
+			return true; // Token is valid
+		} catch (error) {
+			// If decoding fails or token is invalid, remove it and redirect to login
+			localStorage.removeItem("token");
+			window.location = "/login";
+			return false;
+		}
+	};
+
+	useEffect(() => {
+		checkTokenExpiration(); // Check token expiration when the component is mounted
+	}, []);
 
 	return (
 		<div className="login_container">
