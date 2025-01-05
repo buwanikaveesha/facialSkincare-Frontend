@@ -9,43 +9,80 @@ const AccountSettings = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedUser, setEditedUser] = useState({ firstName: "", lastName: "", email: "" });
     const [error, setError] = useState(null);
-    const [photo, setPhoto] = useState(null); // State for selected photo
+    const [photo, setPhoto] = useState(null);
+    const [photoPreview, setPhotoPreview] = useState(null);
+
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
                 const token = localStorage.getItem('token');
                 if (!token) {
-                    setError('No JWT token found');
-                    return;
+                    throw new Error('No JWT token found');
                 }
 
-                const response = await axios.get("http://localhost:3000/api/users/profile", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
+                const response = await axios.get(`${apiUrl}/api/users/profile`, {
+                    headers: { Authorization: `Bearer ${token}` },
                 });
 
-                setUser(response.data);
+                const userData = response.data;
+                setUser(userData);
                 setEditedUser({
-                    firstName: response.data.firstName,
-                    lastName: response.data.lastName,
-                    email: response.data.email,
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    email: userData.email,
                 });
+                setPhotoPreview(userData.profilePhoto);
+                setError(null);
             } catch (err) {
                 console.error('Error fetching user data:', err);
-                setError('Failed to fetch user data');
+                setError('Failed to fetch user data. Please try again.');
             }
         };
 
         fetchUserData();
-    }, []);
+    }, [apiUrl]);
 
-    const handleInputChange = (e) => {
-        setEditedUser({
-            ...editedUser,
-            [e.target.name]: e.target.value,
-        });
+    const handlePhotoChange = (e) => {
+        const selectedPhoto = e.target.files[0];
+        if (selectedPhoto) {
+            setPhoto(selectedPhoto);
+            setPhotoPreview(URL.createObjectURL(selectedPhoto));
+        }
+    };
+
+    const handlePhotoUpload = async () => {
+        if (!photo) {
+            setError("Please select a photo to upload.");
+            return;
+        }
+
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('JWT token is missing');
+            }
+
+            const formData = new FormData();
+            formData.append('profilePhoto', photo);
+
+            const response = await axios.put(`${apiUrl}/api/users/profile-photo`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            setUser((prev) => ({ ...prev, profilePhoto: response.data.profilePhoto }));
+            setPhotoPreview(response.data.profilePhoto);
+            setPhoto(null);
+            setError(null);
+            alert('Profile photo updated successfully.');
+        } catch (err) {
+            console.error('Error uploading photo:', err);
+            setError(err.response?.data?.message || 'Failed to upload photo.');
+        }
     };
 
     const handleEditClick = () => {
@@ -56,90 +93,70 @@ const AccountSettings = () => {
         try {
             const token = localStorage.getItem('token');
             if (!token) {
-                setError('No JWT token found');
-                return;
+                throw new Error('JWT token is missing');
             }
 
-            const response = await axios.put(
-                "http://localhost:3000/api/users/profile",
-                editedUser,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
+            const response = await axios.put(`${apiUrl}/api/users/profile`, editedUser, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
 
             setUser(response.data);
             setIsEditing(false);
+            setError(null);
+            alert('Profile updated successfully.');
         } catch (err) {
             console.error('Error updating user data:', err);
-            setError('Failed to update user data');
+            setError(err.response?.data?.message || 'Failed to update profile.');
         }
     };
 
-    const handlePhotoChange = (e) => {
-        setPhoto(e.target.files[0]);
-    };
-
-    const handlePhotoUpload = async () => {
-        if (!photo) {
-            setError("No photo selected");
-            return;
-        }
-
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                setError('No JWT token found');
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append("profilePhoto", photo);
-
-            const response = await axios.put(
-                "http://localhost:3000/api/users/profile-photo",
-                formData,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "multipart/form-data",
-                    },
-                }
-            );
-
-            setUser({ ...user, profilePhoto: response.data.profilePhoto });
-            setError(null);
-        } catch (err) {
-            console.error('Error uploading photo:', err);
-            setError('Failed to upload photo');
-        }
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setEditedUser((prevState) => ({ ...prevState, [name]: value }));
     };
 
     return (
         <div>
             <Navbar />
             <Sidebar />
-            <div className='profile-tittle'>
+            <div className="profile-title">
                 <h1>My Profile</h1>
                 <div className="account-settings">
                     <div className="profile-container">
                         <div className="profile-photo">
                             <div className="photo-circle">
-                                {user.profilePhoto ? (
-                                    <img src={user.profilePhoto} alt="Profile" className="photo-circle-img" />
+                                {(photoPreview || user.profilePhoto) ? (
+                                    <img
+                                        src={`${apiUrl}${user.profilePhoto}`}
+                                        alt="Profile"
+                                        className="photo-circle-img"
+                                        onClick={() => document.getElementById('file-input').click()}
+                                    />
+
                                 ) : (
-                                    <button className="add-photo-btn">+</button>
+                                    <button
+                                        className="add-photo-btn"
+                                        onClick={() => document.getElementById('file-input').click()}
+                                    >
+                                        +
+                                    </button>
                                 )}
                             </div>
-                            <input type="file" accept="image/*" onChange={handlePhotoChange} />
-                            <button className="photo-label" onClick={handlePhotoUpload}>Upload Photo</button>
+                            <input
+                                id="file-input"
+                                type="file"
+                                accept="image/*"
+                                style={{ display: "none" }}
+                                onChange={handlePhotoChange}
+                            />
+                            <button className="upload-btn" onClick={handlePhotoUpload}>
+                                {photoPreview || user.profilePhoto ? 'Change Photo' : 'Upload Photo'}
+                            </button>
                         </div>
                         <div className="personal-info">
                             <h3>Personal Information</h3>
                             {error && <p className="error">{error}</p>}
-                            <div className='name-email'>
+                            <div className="name-email">
                                 {isEditing ? (
                                     <>
                                         <p>
