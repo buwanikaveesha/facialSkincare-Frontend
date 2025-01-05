@@ -44,44 +44,39 @@ const AccountSettings = () => {
         fetchUserData();
     }, [apiUrl]);
 
-    const handlePhotoChange = (e) => {
+    const handlePhotoChange = async (e) => {
         const selectedPhoto = e.target.files[0];
         if (selectedPhoto) {
             setPhoto(selectedPhoto);
-            setPhotoPreview(URL.createObjectURL(selectedPhoto));
-        }
-    };
+            const previewUrl = URL.createObjectURL(selectedPhoto);
+            setPhotoPreview(previewUrl);
 
-    const handlePhotoUpload = async () => {
-        if (!photo) {
-            setError("Please select a photo to upload.");
-            return;
-        }
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    throw new Error('JWT token is missing');
+                }
 
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                throw new Error('JWT token is missing');
+                const formData = new FormData();
+                formData.append('profilePhoto', selectedPhoto);
+
+                const response = await axios.put(`${apiUrl}/api/users/profile-photo`, formData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                // Update user profile with new photo
+                setUser((prev) => ({ ...prev, profilePhoto: response.data.profilePhoto }));
+                setPhotoPreview(response.data.profilePhoto);
+                setPhoto(null);
+                setError(null);
+                alert('Profile photo updated successfully.');
+            } catch (err) {
+                console.error('Error uploading photo:', err);
+                setError(err.response?.data?.message || 'Failed to upload photo.');
             }
-
-            const formData = new FormData();
-            formData.append('profilePhoto', photo);
-
-            const response = await axios.put(`${apiUrl}/api/users/profile-photo`, formData, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-
-            setUser((prev) => ({ ...prev, profilePhoto: response.data.profilePhoto }));
-            setPhotoPreview(response.data.profilePhoto);
-            setPhoto(null);
-            setError(null);
-            alert('Profile photo updated successfully.');
-        } catch (err) {
-            console.error('Error uploading photo:', err);
-            setError(err.response?.data?.message || 'Failed to upload photo.');
         }
     };
 
@@ -125,14 +120,12 @@ const AccountSettings = () => {
                     <div className="profile-container">
                         <div className="profile-photo">
                             <div className="photo-circle">
-                                {(photoPreview || user.profilePhoto) ? (
+                                {photoPreview || user.profilePhoto ? (
                                     <img
-                                        src={`${apiUrl}${user.profilePhoto}`}
+                                        src={`${apiUrl}${user.profilePhoto || photoPreview}`}
                                         alt="Profile"
                                         className="photo-circle-img"
-                                        onClick={() => document.getElementById('file-input').click()}
                                     />
-
                                 ) : (
                                     <button
                                         className="add-photo-btn"
@@ -141,6 +134,12 @@ const AccountSettings = () => {
                                         +
                                     </button>
                                 )}
+                                <div
+                                    className="add-photo-icon"
+                                    onClick={() => document.getElementById('file-input').click()}
+                                >
+                                    +
+                                </div>
                             </div>
                             <input
                                 id="file-input"
@@ -149,10 +148,8 @@ const AccountSettings = () => {
                                 style={{ display: "none" }}
                                 onChange={handlePhotoChange}
                             />
-                            <button className="upload-btn" onClick={handlePhotoUpload}>
-                                {photoPreview || user.profilePhoto ? 'Change Photo' : 'Upload Photo'}
-                            </button>
                         </div>
+
                         <div className="personal-info">
                             <h3>Personal Information</h3>
                             {error && <p className="error">{error}</p>}
