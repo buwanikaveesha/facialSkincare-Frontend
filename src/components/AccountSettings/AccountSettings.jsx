@@ -1,8 +1,9 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import './AccountSettings.css';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
-import axios from 'axios';
+import './AccountSettings.css';
+import { FaPen, FaTrash } from 'react-icons/fa';
 
 const AccountSettings = () => {
     const [user, setUser] = useState({ firstName: "", lastName: "", email: "", profilePhoto: "" });
@@ -11,6 +12,7 @@ const AccountSettings = () => {
     const [error, setError] = useState(null);
     const [photo, setPhoto] = useState(null);
     const [photoPreview, setPhotoPreview] = useState(null);
+    const [showOptions, setShowOptions] = useState(false); // State to toggle options (Delete, Update)
 
     const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -84,7 +86,33 @@ const AccountSettings = () => {
             }
         }
     };
-        
+
+    const handleDeletePhoto = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('JWT token is missing');
+            }
+    
+            await axios.put(`${apiUrl}/api/users/delete-profile-photo`, {}, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            // Remove photo from user state and reset the profile photo
+            setUser((prev) => ({ ...prev, profilePhoto: "" }));
+            setPhotoPreview(null);
+            localStorage.removeItem('profilePhoto');
+
+            setShowOptions(false);  // Hide options after deleting
+            alert('Profile photo deleted successfully.');
+        } catch (err) {
+            console.error('Error deleting photo:', err);
+            setError(err.response?.data?.message || 'Failed to delete photo.');
+        }
+    };
+
     const handleEditClick = () => {
         setIsEditing(true);
     };
@@ -139,12 +167,14 @@ const AccountSettings = () => {
                                         +
                                     </button>
                                 )}
-                                <div
-                                    className="add-photo-icon"
-                                    onClick={() => document.getElementById('file-input').click()}
-                                >
-                                    +
-                                </div>
+                            </div>
+                            <div className="photo-buttons">
+                                <button className="update-photo" onClick={() => document.getElementById('file-input').click()}>
+                                    <FaPen /> Edit Photo
+                                </button>
+                                <button className="delete-photo" onClick={handleDeletePhoto}>
+                                    <FaTrash /> Delete Photo
+                                </button>
                             </div>
                             <input
                                 id="file-input"

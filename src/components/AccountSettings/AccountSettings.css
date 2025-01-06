@@ -171,3 +171,27 @@
     font-weight: bold;
     color: #333;
 }
+
+.update-photo {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    color: black;
+    border-radius: 5.7rem;
+    width: 120px;
+    height: 40px;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.delete-photo {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    color: black;
+    border-radius: 5.7rem;
+    width: 120px;
+    height: 40px;
+    font-size: 12px;
+}
+
