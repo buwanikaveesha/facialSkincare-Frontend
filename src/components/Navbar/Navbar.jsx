@@ -16,35 +16,41 @@ const Navbar = () => {
       setIsLoggedIn(false);
     }
 
-    // Retrieve the stored profile photo URL from localStorage
+    // Retrieve and validate the stored profile photo URL
     const storedProfilePhoto = localStorage.getItem("profilePhoto");
     if (storedProfilePhoto) {
-      setUserProfilePhoto(storedProfilePhoto); // Set it to state
+      const img = new Image();
+      img.src = storedProfilePhoto;
+      img.onload = () => setUserProfilePhoto(storedProfilePhoto); // Valid image
+      img.onerror = () => setUserProfilePhoto(null); // Invalid image
     }
-}, []);
+  }, []);  // Empty array ensures this effect runs only once on mount
 
-  // Listen for changes in localStorage
+  // Listen for changes in localStorage to update the profile photo dynamically
   useEffect(() => {
     const handleStorageChange = () => {
-        // Check if the profilePhoto key is updated in localStorage
-        const storedProfilePhoto = localStorage.getItem("profilePhoto");
-        if (storedProfilePhoto) {
-            setUserProfilePhoto(storedProfilePhoto); // Update state when photo changes
-        }
+      const storedProfilePhoto = localStorage.getItem("profilePhoto");
+      if (storedProfilePhoto) {
+        const img = new Image();
+        img.src = storedProfilePhoto;
+        img.onload = () => setUserProfilePhoto(storedProfilePhoto);
+        img.onerror = () => setUserProfilePhoto(null);
+      } else {
+        setUserProfilePhoto(null);
+      }
     };
 
-    // Listen for changes in localStorage
     window.addEventListener("storage", handleStorageChange);
 
     return () => {
-        window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("storage", handleStorageChange);
     };
-}, []);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("hasAgreed");
-    localStorage.removeItem("profilePhoto");
+    // Profile photo is still stored, so it persists for the next login
     setIsLoggedIn(false);
     navigate("/");
   };
@@ -74,7 +80,7 @@ const Navbar = () => {
                     className="profile-icon-img"
                   />
                 ) : (
-                  <FaUserCircle className="profile-icon" />
+                  <FaUserCircle className="user-icon" />
                 )}
               </div>
             </Link>
