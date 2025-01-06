@@ -5,6 +5,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userProfilePhoto, setUserProfilePhoto] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,11 +15,36 @@ const Navbar = () => {
     } else {
       setIsLoggedIn(false);
     }
-  }, []);
+
+    // Retrieve the stored profile photo URL from localStorage
+    const storedProfilePhoto = localStorage.getItem("profilePhoto");
+    if (storedProfilePhoto) {
+      setUserProfilePhoto(storedProfilePhoto); // Set it to state
+    }
+}, []);
+
+  // Listen for changes in localStorage
+  useEffect(() => {
+    const handleStorageChange = () => {
+        // Check if the profilePhoto key is updated in localStorage
+        const storedProfilePhoto = localStorage.getItem("profilePhoto");
+        if (storedProfilePhoto) {
+            setUserProfilePhoto(storedProfilePhoto); // Update state when photo changes
+        }
+    };
+
+    // Listen for changes in localStorage
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+        window.removeEventListener("storage", handleStorageChange);
+    };
+}, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("hasAgreed");
+    localStorage.removeItem("profilePhoto");
     setIsLoggedIn(false);
     navigate("/");
   };
@@ -40,7 +66,17 @@ const Navbar = () => {
         {isLoggedIn ? (
           <>
             <Link to="/accountSettings">
-              <FaUserCircle className="profile-icon" />
+              <div className="profile-icon">
+                {userProfilePhoto ? (
+                  <img
+                    src={userProfilePhoto}
+                    alt="Profile"
+                    className="profile-icon-img"
+                  />
+                ) : (
+                  <FaUserCircle className="profile-icon" />
+                )}
+              </div>
             </Link>
             <button className="login_home_btn" onClick={handleLogout}>
               Logout

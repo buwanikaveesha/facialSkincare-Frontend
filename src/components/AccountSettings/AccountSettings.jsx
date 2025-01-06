@@ -50,26 +50,31 @@ const AccountSettings = () => {
             setPhoto(selectedPhoto);
             const previewUrl = URL.createObjectURL(selectedPhoto);
             setPhotoPreview(previewUrl);
-
+    
             try {
                 const token = localStorage.getItem('token');
                 if (!token) {
                     throw new Error('JWT token is missing');
                 }
-
+    
                 const formData = new FormData();
                 formData.append('profilePhoto', selectedPhoto);
-
+    
                 const response = await axios.put(`${apiUrl}/api/users/profile-photo`, formData, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         'Content-Type': 'multipart/form-data',
                     },
                 });
-
+    
                 // Update user profile with new photo
                 setUser((prev) => ({ ...prev, profilePhoto: response.data.profilePhoto }));
-                setPhotoPreview(response.data.profilePhoto);
+    
+                // Save the profile photo to localStorage to sync with Navbar
+                const updatedProfilePhoto = `${apiUrl}${response.data.profilePhoto}`;
+                localStorage.setItem('profilePhoto', updatedProfilePhoto);
+    
+                // Clear any other states
                 setPhoto(null);
                 setError(null);
                 alert('Profile photo updated successfully.');
@@ -79,7 +84,7 @@ const AccountSettings = () => {
             }
         }
     };
-
+        
     const handleEditClick = () => {
         setIsEditing(true);
     };

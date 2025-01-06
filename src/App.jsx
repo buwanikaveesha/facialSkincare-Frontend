@@ -10,6 +10,7 @@ import Signup from "./components/Signup/Signup";
 import StartAnalysis from "./components/StartAnalysis/StartAnalysis";
 import PhotoUpload from "./components/PhotoUpload/PhotoUpload";
 import AccountSettings from "./components/AccountSettings/AccountSettings";
+import ParentComponent from "./components/ParentComponent/ParentComponent";
 
 
 
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/startAnalysis" element={<StartAnalysis />} />
         <Route path="/photoUpload" element={<PhotoUpload />} />
         <Route path="/accountSettings" element={<AccountSettings />} />
+        <Route path="/parentSettings" element={<ParentComponent />} />
       </Routes>
     </>
   );
