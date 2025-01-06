@@ -12,7 +12,7 @@ const AccountSettings = () => {
     const [error, setError] = useState(null);
     const [photo, setPhoto] = useState(null);
     const [photoPreview, setPhotoPreview] = useState(null);
-    const [showOptions, setShowOptions] = useState(false); // State to toggle options (Delete, Update)
+    const [showOptions, setShowOptions] = useState(false);
 
     const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -105,7 +105,7 @@ const AccountSettings = () => {
             setPhotoPreview(null);
             localStorage.removeItem('profilePhoto');
 
-            setShowOptions(false);  // Hide options after deleting
+            setShowOptions(false);
             alert('Profile photo deleted successfully.');
         } catch (err) {
             console.error('Error deleting photo:', err);
