@@ -13,7 +13,7 @@ const Sidebar = () => {
             <Link to="/saved-items" className="sidebar-item">
                 <FontAwesomeIcon icon={faBookmark} className="sidebar-icon" /> Saved Items
             </Link>
-            <Link to="/delete-account" className="sidebar-item">
+            <Link to="/deleteAccount" className="sidebar-item">
                 <FontAwesomeIcon icon={faTrash} className="sidebar-icon" /> Delete Account
             </Link>
         </div>

@@ -1,0 +1,28 @@
+.delete-account-container {
+    padding: 20px;
+    text-align: center;
+    margin-left: 150px;
+}
+
+.delete-account-delete-btn {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.delete-account-delete-btn:hover {
+    background-color: darkred;
+}
+
+.delete-account-error-message {
+    color: red;
+}
+
+.delete-account-success-message {
+    color: green;
+}
