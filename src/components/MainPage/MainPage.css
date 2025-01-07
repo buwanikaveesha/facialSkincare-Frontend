@@ -1,5 +1,7 @@
 .main_page-container {
-    scroll-behavior: smooth;
-  }
-  
-  
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 20px;
+}

@@ -66,6 +66,7 @@ const Navbar = () => {
         <Link to="/">Home</Link>
         <Link to="/features">Features</Link>
         <Link to="/howToDo">How it Works</Link>
+        <Link to="/faq">FAQ</Link>
       </div>
 
       <div className="navbar-actions">

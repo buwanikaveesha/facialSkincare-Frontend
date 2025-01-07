@@ -3,6 +3,7 @@ import Home from "../Home/Home";
 import HowToDo from "../HowToDo/HowToDo";
 import Features from "../Features/Features";
 import "./MainPage.css";
+import FAQ from "../FAQ/FAQ"
 
 const MainPage = () => {
     return (
@@ -10,6 +11,7 @@ const MainPage = () => {
             <Home />
             <HowToDo />
             <Features />
+            <FAQ />
         </div>
     );
 };

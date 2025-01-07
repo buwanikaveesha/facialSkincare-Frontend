@@ -14,6 +14,7 @@ import ParentComponent from "./components/ParentComponent/ParentComponent";
 import DeleteAccount from "./components/DeleteAccount/DeleteAccount";
 import Footer from "./components/Footer/Footer";
 import MainPage from "./components/MainPage/MainPage";
+import FAQ from "./components/FAQ/FAQ";
 
 const App = () => {
 
@@ -37,8 +38,8 @@ const App = () => {
         <Route path="/accountSettings" element={<AccountSettings />} />
         <Route path="/parentSettings" element={<ParentComponent />} />
         <Route path="/deleteAccount" element={<DeleteAccount />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
-      <br></br><br></br>
       {/* Footer rendered at the bottom */}
       <Footer />
     </>
