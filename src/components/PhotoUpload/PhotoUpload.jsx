@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HealthyFace from "../../assets/images/face2.png";
 import "./PhotoUpload.css";
-        import Navbar from "../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import Overlay from "../Overlay/Overlay";

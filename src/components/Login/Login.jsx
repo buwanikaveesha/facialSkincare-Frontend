@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as jwt_decode from 'jwt-decode';
 import "./Login.css";
-import * as jwt_decode from 'jwt-decode';  // Named import for jwt-decode
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -18,14 +19,14 @@ const Login = () => {
 			const url = "http://localhost:3000/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data); // Store token in localStorage
-			window.location = "/photoUpload"; // Redirect to photo upload page
+			navigate("/photoUpload");
 		} catch (error) {
 			if (
 				error.response &&
 				error.response.status >= 400 &&
 				error.response.status <= 500
 			) {
-				setError(error.response.data.message); // Display error message
+				setError(error.response.data.message);
 			}
 		}
 	};
@@ -36,25 +37,25 @@ const Login = () => {
 		if (!token) return false; // No token, user is not authenticated
 
 		try {
-			const decodedToken = jwt_decode.default(token); // Use 'default' to access the default export
+			const decodedToken = jwt_decode(token);
 			const currentTime = Date.now() / 1000; // Get current time in seconds
 
 			if (decodedToken.exp < currentTime) {
 				localStorage.removeItem("token"); // Remove expired token
-				window.location = "/login"; // Redirect to login page
+				navigate("/login"); // redirect to login
 				return false; // Token is expired
 			}
 			return true; // Token is valid
 		} catch (error) {
 			// If decoding fails or token is invalid, remove it and redirect to login
 			localStorage.removeItem("token");
-			window.location = "/login";
+			navigate("/login");
 			return false;
 		}
 	};
 
 	useEffect(() => {
-		checkTokenExpiration(); // Check token expiration when the component is mounted
+		checkTokenExpiration();
 	}, []);
 
 	return (
@@ -88,7 +89,7 @@ const Login = () => {
 					</form>
 				</div>
 				<div className="right_login">
-					<h1>New Here ?</h1>
+					<h1>New Here?</h1>
 					<Link to="/signup">
 						<button type="button" className="white_btn_login">
 							Sign Up
