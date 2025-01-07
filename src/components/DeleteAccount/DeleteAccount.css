@@ -2,6 +2,9 @@
     padding: 20px;
     text-align: center;
     margin-left: 150px;
+    margin-top: 80px;
+    height: 350px;
+    align-items: center;
 }
 
 .delete-account-delete-btn {

@@ -13,7 +13,7 @@ const StartAnalysis = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="skin-coach-container">
         <div className="image-section">

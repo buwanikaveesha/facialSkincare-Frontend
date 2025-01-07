@@ -4,6 +4,9 @@
     padding: 20px 0;
     text-align: center;
     font-size: 14px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
 }
 
 .footer-content {

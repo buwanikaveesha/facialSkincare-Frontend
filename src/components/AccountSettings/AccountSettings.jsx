@@ -148,7 +148,7 @@ const AccountSettings = () => {
             {/* <Navbar /> */}
             <Sidebar />
             <div className="profile-title">
-                <h1>My Profile</h1>
+                <h1 className='my_profile'>My Profile</h1>
                 <div className="account-settings">
                     <div className="profile-container">
                         <div className="profile-photo">

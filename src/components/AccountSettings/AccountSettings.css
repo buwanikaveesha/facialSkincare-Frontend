@@ -8,6 +8,10 @@
     margin-top: 60px;
 }
 
+.my_profile {
+    margin-left: 850px;
+}
+
 .profile-container {
     gap: 20px;
     align-items: flex-start;

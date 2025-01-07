@@ -59,7 +59,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
 
             <div className="photo_upload-container">
                 <div className="photo_upload-image-section">
