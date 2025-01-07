@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Features from "./components/Features/Features";
 import Home from "./components/Home/Home";
@@ -12,20 +12,23 @@ import PhotoUpload from "./components/PhotoUpload/PhotoUpload";
 import AccountSettings from "./components/AccountSettings/AccountSettings";
 import ParentComponent from "./components/ParentComponent/ParentComponent";
 import DeleteAccount from "./components/DeleteAccount/DeleteAccount";
-
-
+import Footer from "./components/Footer/Footer";
+import MainPage from "./components/MainPage/MainPage";
 
 const App = () => {
-  const user = localStorage.getItem("token");
 
+  const user = localStorage.getItem("token");
 
   return (
     <>
+      {/* Navbar is placed outside the Routes to ensure it's visible on all pages */}
+      <Navbar />
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/navbar" element={<Navbar />} />
         <Route path="/features" element={<Features />} />
         <Route path="/howToDo" element={<HowToDo />} />
         <Route path="/instructions" element={<Instructions />} />
@@ -35,6 +38,9 @@ const App = () => {
         <Route path="/parentSettings" element={<ParentComponent />} />
         <Route path="/deleteAccount" element={<DeleteAccount />} />
       </Routes>
+      <br></br><br></br>
+      {/* Footer rendered at the bottom */}
+      <Footer />
     </>
   );
 };

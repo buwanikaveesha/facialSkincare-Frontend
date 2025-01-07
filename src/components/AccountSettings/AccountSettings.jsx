@@ -145,7 +145,7 @@ const AccountSettings = () => {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <Sidebar />
             <div className="profile-title">
                 <h1>My Profile</h1>

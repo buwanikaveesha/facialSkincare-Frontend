@@ -31,7 +31,7 @@ const HowToDo = () => {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="HowToDo-container">
                 <h1>How to use FacialCure?</h1>
                 <div className="HowToDo_steps">

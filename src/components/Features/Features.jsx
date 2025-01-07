@@ -32,7 +32,7 @@ const Features = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="feature-container">
         <h2 className="feature-title">Why is FacialCure worth using?</h2>
         <div className="feature-features">

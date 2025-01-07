@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import bannerImage from '../../assets/images/banner1.png';
 import Navbar from '../Navbar/Navbar';
 import './Home.css';
+import Footer from '../Footer/Footer';
+import HowToDo from '../HowToDo/HowToDo';
+import Features from '../Features/Features';
 
 const Home = () => {
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
 
             <div className="skincare-container">
                 <header className="skincare-header">
@@ -34,6 +37,8 @@ const Home = () => {
                     </p>
                 </section>
             </div>
+            <br></br>
+            <br></br>
         </div>
     );
 };

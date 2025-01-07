@@ -25,7 +25,7 @@ const DeleteAccount = () => {
             localStorage.removeItem('token');
             localStorage.removeItem('hasAgreed');
             localStorage.removeItem('profilePhoto');
-           
+
         } catch (err) {
             console.error('Error deleting account:', err);
             setError('Failed to delete account. Please try again later.');
@@ -34,7 +34,7 @@ const DeleteAccount = () => {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <Sidebar />
             <div className="delete-account-container">
                 <h1>Delete Account</h1>

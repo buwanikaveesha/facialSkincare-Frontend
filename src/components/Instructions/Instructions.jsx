@@ -45,7 +45,7 @@ const Instructions = () => {
 
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="instruction_container">
                 <div className="instruction_carousel">
                     <div className="instruction_arrow left" onClick={goToPreviousStep}>
