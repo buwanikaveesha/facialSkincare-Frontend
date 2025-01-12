@@ -10,6 +10,7 @@ const Footer = () => {
                     <Link to="/home">Home</Link>
                     <Link to="/features">Features</Link>
                     <Link to="/howToDo">How it Works</Link>
+                    <Link to="/faq">FAQ</Link>
                 </div>
                 <div className="footer-social">
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">

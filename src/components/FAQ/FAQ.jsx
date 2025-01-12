@@ -8,17 +8,17 @@ const FAQ = () => {
         {
             question: "How is Machine Learning used in the application?",
             answer:
-                "Machine Learning analyzes uploaded images to detect skin issues and recommend solutions.",
+                "Machine Learning analyzes uploaded images to detect facial skin issues and recommend face packs as solutions.",
         },
         {
-            question: "Who should use AI Dermatologist?",
+            question: "Who should use FacialCure?",
             answer:
-                "Anyone seeking affordable and accurate skincare advice can use the AI Dermatologist.",
+                "Anyone seeking affordable and accurate facial skincare advice can use the FacialCure.",
         },
         {
-            question: "Does AI Dermatologist replace the Doctor?",
+            question: "Does FacialCure replace the Doctor?",
             answer:
-                "No, the AI Dermatologist provides recommendations but does not replace professional medical advice.",
+                "No, the FacialCure provides recommendations but does not replace professional medical advice.",
         },
         {
             question: "Is my personal information safe?",
