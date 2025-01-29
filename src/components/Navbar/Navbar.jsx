@@ -1,56 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ isUserLoggedIn }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfilePhoto, setUserProfilePhoto] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
+    setIsLoggedIn(!!token);
+  }, [isUserLoggedIn]); // Depend on isUserLoggedIn to re-check auth status
 
-    // Retrieve and validate the stored profile photo URL
-    const storedProfilePhoto = localStorage.getItem("profilePhoto");
-    if (storedProfilePhoto) {
-      const img = new Image();
-      img.src = storedProfilePhoto;
-      img.onload = () => setUserProfilePhoto(storedProfilePhoto); // Valid image
-      img.onerror = () => setUserProfilePhoto(null); // Invalid image
-    }
-  }, []);  // Empty array ensures this effect runs only once on mount
-
-  // Listen for changes in localStorage to update the profile photo dynamically
   useEffect(() => {
-    const handleStorageChange = () => {
+    if (isLoggedIn) {
       const storedProfilePhoto = localStorage.getItem("profilePhoto");
       if (storedProfilePhoto) {
         const img = new Image();
         img.src = storedProfilePhoto;
         img.onload = () => setUserProfilePhoto(storedProfilePhoto);
         img.onerror = () => setUserProfilePhoto(null);
-      } else {
-        setUserProfilePhoto(null);
       }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
+    } else {
+      setUserProfilePhoto(null); // Reset profile photo when logged out
+    }
+  }, [isLoggedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("hasAgreed");
-    // Profile photo is still stored, so it persists for the next login
     setIsLoggedIn(false);
     navigate("/");
   };

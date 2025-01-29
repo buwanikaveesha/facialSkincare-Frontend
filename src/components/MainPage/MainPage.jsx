@@ -9,8 +9,8 @@ const MainPage = () => {
     return (
         <div className="main_page-container">
             <Home />
-            <HowToDo />
             <Features />
+            <HowToDo />
             <FAQ />
         </div>
     );
