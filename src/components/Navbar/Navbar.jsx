@@ -3,16 +3,26 @@ import { FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = ({ isUserLoggedIn }) => {
+const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfilePhoto, setUserProfilePhoto] = useState(null);
   const navigate = useNavigate();
 
+  // Check login status when component mounts and when `isUserLoggedIn` updates
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-  }, [isUserLoggedIn]); // Depend on isUserLoggedIn to re-check auth status
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(!!token);
+    };
 
+    checkLoginStatus(); // Run on mount
+
+    // Listen for localStorage changes (useful for multi-tab scenarios)
+    window.addEventListener("storage", checkLoginStatus);
+    return () => window.removeEventListener("storage", checkLoginStatus);
+  }, []);
+
+  // Fetch profile photo when user is logged in
   useEffect(() => {
     if (isLoggedIn) {
       const storedProfilePhoto = localStorage.getItem("profilePhoto");
@@ -23,14 +33,16 @@ const Navbar = ({ isUserLoggedIn }) => {
         img.onerror = () => setUserProfilePhoto(null);
       }
     } else {
-      setUserProfilePhoto(null); // Reset profile photo when logged out
+      setUserProfilePhoto(null);
     }
   }, [isLoggedIn]);
 
+  // Handle user logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("hasAgreed");
     setIsLoggedIn(false);
+    setIsUserLoggedIn(false); // Update parent state
     navigate("/");
   };
 
@@ -73,6 +85,8 @@ const Navbar = ({ isUserLoggedIn }) => {
             Login
           </button>
         )}
+		
+		
       </div>
     </nav>
   );

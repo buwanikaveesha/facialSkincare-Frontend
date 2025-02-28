@@ -1,0 +1,94 @@
+.history-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.history_title {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 2.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    vertical-align: top;
+}
+
+/* Recommendations container styling */
+.recommendations {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Adds space between each section */
+}
+
+/* Individual recommendation item styling */
+.recommendation-item {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Title styling for each recommendation section */
+.recommendation-item h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* User Feedback block styling */
+.user-feedback {
+    font-style: italic;
+    color: #555;
+}
+
+/* User feedback list styling */
+.user-feedback ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.user-feedback li {
+    margin-bottom: 6px;
+}
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.no-results-message {
+    font-size: 18px;
+    color: #888;
+    margin-top: 20px;
+}
+
+.sidebar {
+    margin-bottom: 20px;
+}

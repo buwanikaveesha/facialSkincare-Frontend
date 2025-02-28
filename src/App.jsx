@@ -15,6 +15,10 @@ import DeleteAccount from "./components/DeleteAccount/DeleteAccount";
 import Footer from "./components/Footer/Footer";
 import MainPage from "./components/MainPage/MainPage";
 import FAQ from "./components/FAQ/FAQ";
+import History from "./components/History/History";
+
+
+
 
 const App = () => {
 
@@ -39,6 +43,11 @@ const App = () => {
         <Route path="/parentSettings" element={<ParentComponent />} />
         <Route path="/deleteAccount" element={<DeleteAccount />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/History" element={<History />} />
+
+
+
+
       </Routes>
       {/* Footer rendered at the bottom */}
       <Footer />

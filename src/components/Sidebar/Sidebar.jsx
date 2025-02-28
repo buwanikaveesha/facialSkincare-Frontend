@@ -40,7 +40,7 @@ const Sidebar = () => {
                         <Link to="/accountSettings" className="sidebar-item" onClick={closeSidebar}>
                             <FontAwesomeIcon icon={faUser} className="sidebar-icon" /> Account Settings
                         </Link>
-                        <Link to="/saved-items" className="sidebar-item" onClick={closeSidebar}>
+                        <Link to="/History" className="sidebar-item" onClick={closeSidebar}>
                             <FontAwesomeIcon icon={faBookmark} className="sidebar-icon" /> Saved Items
                         </Link>
                         <Link to="/deleteAccount" className="sidebar-item" onClick={closeSidebar}>

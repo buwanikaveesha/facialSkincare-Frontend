@@ -36,7 +36,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     position: fixed;
     top: 120px;
     left: 50px;
@@ -74,8 +74,8 @@
     transition: background 0.3s, transform 0.2s;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 40px;
+    gap: 5px;
+    margin-top: 20px;
 }
 
 .sidebar-item:hover {
