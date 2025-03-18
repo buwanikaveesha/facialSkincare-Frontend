@@ -1,108 +1,49 @@
-.profile-title{
-    height: 485px;
+.profile-title {
+    height: 480px;
+}
+
+.my_profile {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 5px;
+}
+
+.account-settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .account-settings {
-    max-width: 500px;
+    max-width: 400px;
     background-color: rgb(246, 243, 243);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 2px 4px 10px rgba(41, 41, 41, 0.2);
-    margin-left: 500px;
-    margin-top: 40px;
-}
-
-.my_profile {
-    margin-left: 700px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .profile-container {
-    gap: 20px;
-    align-items: flex-start;
-}
-
-.profile-photo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
-.photo-circle {
-    position: relative;
-    width: 120px;
-    height: 120px; 
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-}
-
-.add-photo-btn {
-    background: #17c3c3;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    font-size: 16px;
-}
-
-.photo-label {
-    margin-top: 20px;
-    background: none;
-    border: none;
-    color: #0099ff;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.photo-circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #ccc;
-    background-color: #f0f0f0;
-}
-
-.photo-circle-img {
-    width: 100%;
-    height: 100%;
+.profile-image {
+    width: 84px;
+    height: 84px;
     object-fit: cover;
     border-radius: 50%;
+    border: 2px solid #d1d5db;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-.add-photo-icon {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #17c3c3;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.add-photo-icon:hover {
-    background-color: #149b9b;
+.profile-image:hover {
+    transform: scale(1.05);
 }
 
 .personal-info {
@@ -133,28 +74,8 @@
     font-size: 16px;
 }
 
-.save-btn {
-    margin-top: 2px;
-    padding: 10px 15px;
-    border: none;
-    background-color: #17c3c3;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    border-radius: 5.7rem;
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-}
-
 .edit-btn:hover {
     background-color: #149b9b;
-}
-
-.profile-tittle h1 {
-    margin-left: 850px;
-    margin-top: 30px;
-    font-size: 36px;
 }
 
 .name-email {
@@ -165,27 +86,3 @@
     font-weight: bold;
     color: #333;
 }
-
-.update-photo {
-    margin-top: 20px;
-    padding: 10px 15px;
-    border: none;
-    color: black;
-    border-radius: 5.7rem;
-    width: 120px;
-    height: 40px;
-    font-size: 12px;
-    margin-right: 10px;
-}
-
-.delete-photo {
-    margin-top: 20px;
-    padding: 10px 15px;
-    border: none;
-    color: black;
-    border-radius: 5.7rem;
-    width: 120px;
-    height: 40px;
-    font-size: 12px;
-}
-

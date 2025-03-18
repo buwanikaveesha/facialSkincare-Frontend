@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import HealthyFace from "../../assets/images/face2.png";
 import "./PhotoUpload.css";
 
-
 const PhotoUpload = ({ onStartAnalysis }) => {
     const [imagePreview, setImagePreview] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,12 +37,17 @@ const PhotoUpload = ({ onStartAnalysis }) => {
     };
 
     const handleUpload = async () => {
+        if (!isLoggedIn) {
+            setError('Please log in first to upload an image.');
+            return;
+        }
+
         if (!file) {
             setError('Please select a file.');
             return;
         }
 
-        setError('');
+        setError(''); // Clear any previous errors
         setPrediction('');
         setRecommendations([]);
         setCurrentIndex(0);
@@ -206,7 +210,6 @@ const PhotoUpload = ({ onStartAnalysis }) => {
         }
     };
 
-
     return (
         <div>
             <div className="photo_upload-container">
@@ -227,8 +230,9 @@ const PhotoUpload = ({ onStartAnalysis }) => {
                     <p className="photo_upload-info-description">
                         Add a photo to make a scan. You can upload a photo from your device.
                     </p>
-                    
+
                     <div className="button-group">
+                        {/* Show the upload button and allow file input only when logged in */}
                         <label htmlFor="upload-input" className="upload-button">
                             <FontAwesomeIcon
                                 icon={faUpload}
@@ -237,6 +241,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
                             />
                             Upload Photo
                         </label>
+
                         <input
                             type="file"
                             id="upload-input"
@@ -244,8 +249,11 @@ const PhotoUpload = ({ onStartAnalysis }) => {
                             accept="image/*"
                             className="file-input"
                             style={{ display: "none" }}
+                            disabled={!isLoggedIn} // Disable the input if not logged in
                         />
                     </div>
+
+                    {!isLoggedIn && <p>Please log in first to upload an image.</p>}
 
                     {imagePreview && (
                         <button className="upload-button" type="button" onClick={handleUpload}>
