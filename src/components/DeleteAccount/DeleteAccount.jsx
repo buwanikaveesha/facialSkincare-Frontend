@@ -37,7 +37,7 @@ const DeleteAccount = () => {
             {/* <Navbar /> */}
             <Sidebar />
             <div className="delete-account-container">
-                <h1>Delete Account</h1>
+                <h1 className='delete_title'>Delete Account</h1>
                 <p>This action cannot be undone. Are you sure you want to delete your account?</p>
                 {error && <p className="delete-account-error-message">{error}</p>}
                 {message && <p className="delete-account-success-message">{message}</p>}

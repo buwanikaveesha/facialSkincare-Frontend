@@ -146,7 +146,6 @@ const AccountSettings = () => {
                     </div>
                 </div>
             </div>
-            <br></br>
         </div>
     );
 };

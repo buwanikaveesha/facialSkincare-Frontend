@@ -1,5 +1,5 @@
 .footer {
-    background-color: #F6F1EE;
+    background-color: #615f5e;
     color: black;
     padding: 20px 0;
     text-align: center;
@@ -23,6 +23,7 @@
     color: black;
     margin: 0 15px;
     text-decoration: none;
+    font-size: 16px;
 }
 
 .footer-links a:hover {

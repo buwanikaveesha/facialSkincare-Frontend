@@ -6,15 +6,23 @@ import { AiOutlineClose } from "react-icons/ai";
 const Overlay = ({ onCloseOverlay, onAgree }) => {
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
+  const [isOverlayVisible, setIsOverlayVisible] = useState(true);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
   const handleAgreeButtonClick = () => {
-    onAgree(); // Save the agreement status
+    onAgree();
     onCloseOverlay();
-    navigate("/photoUpload");
+  
+    setTimeout(() => {
+      navigate("/photoUpload");
+    }, 100);
+  };
+  
+  const closeOverlay = () => {
+    setIsOverlayVisible(false);
   };
 
   return (
@@ -48,6 +56,7 @@ const Overlay = ({ onCloseOverlay, onAgree }) => {
         >
           I Agree
         </button>
+        {isOverlayVisible && <Overlay onCloseOverlay={closeOverlay} onAgree={() => console.log("Agreed")} />}
       </div>
     </div>
   );

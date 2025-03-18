@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 import HealthyFace from "../../assets/images/face2.png";
 import "./PhotoUpload.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
-import Modal from "react-bootstrap/Modal";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import jwt_decode from "jwt-decode";
-// import { jwtDecode } from "jwt-decode";
-import { jwtDecode } from "jwt-decode";
 
 
 const PhotoUpload = ({ onStartAnalysis }) => {
@@ -25,6 +24,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
     const [feedbacks, setFeedbacks] = useState({});
     const [showFeedbackModal, setShowFeedbackModal] = useState(false);
     const [savedResults, setSavedResults] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -161,7 +161,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
             console.log("No token found.");
             setMessage('No token found. Please log in first.');
             setMessageType('danger');
-            return; // Stop execution if token is missing
+            return;
         }
 
         // If userEmail is still empty after decoding, handle the error
@@ -227,7 +227,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
                     <p className="photo_upload-info-description">
                         Add a photo to make a scan. You can upload a photo from your device.
                     </p>
-
+                    
                     <div className="button-group">
                         <label htmlFor="upload-input" className="upload-button">
                             <FontAwesomeIcon

@@ -3,8 +3,12 @@
     text-align: center;
     margin-left: 150px;
     margin-top: 85px;
-    height: 350px;
+    height: 400px;
     align-items: center;
+}
+
+.delete_title{
+    margin-bottom: 80px;
 }
 
 .delete-account-delete-btn {

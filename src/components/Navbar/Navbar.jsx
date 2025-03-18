@@ -15,7 +15,7 @@ const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
       setIsLoggedIn(!!token);
     };
 
-    checkLoginStatus(); // Run on mount
+    checkLoginStatus();
 
     // Listen for localStorage changes (useful for multi-tab scenarios)
     window.addEventListener("storage", checkLoginStatus);
@@ -42,7 +42,7 @@ const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("hasAgreed");
     setIsLoggedIn(false);
-    setIsUserLoggedIn(false); // Update parent state
+    setIsUserLoggedIn(false);
     navigate("/");
   };
 

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import * as jwt_decode from 'jwt-decode';
-import "./Login.css";
 import { jwtDecode } from "jwt-decode";
+import "./Login.css";
 
 
 const Login = () => {
@@ -32,7 +32,7 @@ const Login = () => {
             // Store token in localStorage
             localStorage.setItem("token", res.token);
             navigate("/", { replace: true });
-            window.location.reload(); // Reload to check token expiration
+            window.location.reload();
         } catch (error) {
             console.error("Login Error:", error.response ? error.response.data : error.message);
             if (error.response && error.response.status >= 400 && error.response.status <= 500) {
