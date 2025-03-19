@@ -78,6 +78,24 @@
     background-color: #149b9b;
 }
 
+.save-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #17c3c3;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 5.7rem;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+}
+
+.save-btn:hover {
+    background-color: #149b9b;
+}
+
 .name-email {
     text-align: justify;
 }

@@ -23,11 +23,20 @@
     border-radius: 10px;
     margin-left: 100px;
     margin-top: -25px;
+    font-weight: bold;
 }
 
 .header-text h1 {
     font-size: 2.5rem;
     color: #2b2b2b;
+    font-weight: bold;
+}
+
+.facial_topic{
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
 }
 
 .analysis-button {

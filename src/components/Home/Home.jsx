@@ -28,7 +28,7 @@ const Home = () => {
                 </header>
 
                 <section className="face-mapping-section">
-                    <h2>What is FacialCure?</h2>
+                    <h2 className='facial_topic'>What is FacialCure?</h2>
                     <p className='home_para'>
                         FacialCure is an AI-powered skincare platform that detects issues like acne
                         and pigmentation from user-uploaded images. It provides personalized face pack

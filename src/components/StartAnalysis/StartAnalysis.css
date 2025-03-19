@@ -80,6 +80,7 @@
     border-radius: 5.7rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 .start-button:hover {

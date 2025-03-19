@@ -253,7 +253,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
                         />
                     </div>
 
-                    {!isLoggedIn && <p>Please log in first to upload an image.</p>}
+                    {!isLoggedIn && <p className="alert">Please log in first to upload an image.</p>}
 
                     {imagePreview && (
                         <button className="upload-button" type="button" onClick={handleUpload}>

@@ -196,3 +196,7 @@
     margin-right: 10px;
     display: flex;
 }
+
+.alert{
+    color: red;
+}
