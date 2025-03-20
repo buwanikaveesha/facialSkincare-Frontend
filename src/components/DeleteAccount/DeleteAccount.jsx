@@ -9,6 +9,12 @@ const DeleteAccount = () => {
     const [message, setMessage] = useState(null);
 
     const handleDeleteAccount = async () => {
+        const confirmation = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+
+        if (!confirmation) {
+            return; // Exit if user cancels
+        }
+
         try {
             const token = localStorage.getItem('token');
             if (!token) {
