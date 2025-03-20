@@ -1,12 +1,27 @@
 .history-container {
+    display: flex;
+    /* flex-direction: column; */
+    min-height: 100vh;
     padding: 20px;
     font-family: Arial, sans-serif;
 }
 
-.history_title {
+.history-content {
+    flex-grow: 1;
+}
+
+.history-container p{
     text-align: center;
     margin-top: 50px;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+}
+
+.history_title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
 }
 
 table {
@@ -38,14 +53,12 @@ td {
     vertical-align: top;
 }
 
-/* Recommendations container styling */
 .recommendations {
     display: flex;
     flex-direction: column;
-    gap: 12px; /* Adds space between each section */
+    gap: 12px;
 }
 
-/* Individual recommendation item styling */
 .recommendation-item {
     padding: 10px;
     background-color: #f7f7f7;
@@ -53,20 +66,17 @@ td {
     border: 1px solid #ddd;
 }
 
-/* Title styling for each recommendation section */
 .recommendation-item h4 {
     margin: 0;
     font-size: 16px;
     color: #333;
 }
 
-/* User Feedback block styling */
 .user-feedback {
     font-style: italic;
     color: #555;
 }
 
-/* User feedback list styling */
 .user-feedback ul {
     margin: 0;
     padding: 0;

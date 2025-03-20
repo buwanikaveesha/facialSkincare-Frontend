@@ -44,7 +44,7 @@ const History = () => {
             // Fetch user profile to get email
             const userResponse = await axios.get("http://localhost:3000/api/users/profile", { headers });
             const userEmail = userResponse.data.email;
-            
+
             // Fetch the saved results based on the userEmail
             const response = await axios.get(
                 `http://localhost:3000/api/results/${userEmail}`,
@@ -57,13 +57,13 @@ const History = () => {
             setError("Failed to fetch saved results.");
         }
     };
-    
+
     useEffect(() => {
         if (userEmail) {
             fetchSavedResults();
         }
     }, [userEmail]);
-    
+
     useEffect(() => {
         const getUserData = async () => {
             await fetchUserEmail();
@@ -80,50 +80,52 @@ const History = () => {
     return (
         <div className="history-container">
             <Sidebar />
-            <h2 className='history_title'>Results</h2>
-            {error && <p>{error}</p>}
-            {savedResults.length === 0 ? (
-                <p>No results available.</p>
-            ) : (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Prediction</th>
-                            <th>Recommendations</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {savedResults.map((result, index) => (
-                            <tr key={index}>
-                                <td>{result.prediction}</td>
-                                <td>
-                                    {result.recommendations.map((rec, idx) => (
-                                        <div key={idx} className="recommendation-item">
-                                            <h4>Treatment Pack:</h4>
-                                            <p>{rec.treatmentPack}</p>
-
-                                            <h4>Ingredients:</h4>
-                                            <p>{rec.ingredients}</p>
-
-                                            <h4>How To Do:</h4>
-                                            <p>{rec.howToDo}</p>
-
-                                            <div className="user-feedback">
-                                                <h4>User Feedback:</h4>
-                                                <ul>
-                                                    {rec.userFeedback.map((feedback, fIdx) => (
-                                                        <li key={fIdx}>{feedback}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </td>
+            <div className="history-content">
+                <h2 className='history_title'>Results</h2>
+                {error && <p>{error}</p>}
+                {savedResults.length === 0 ? (
+                    <p>No results available.</p>
+                ) : (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Prediction</th>
+                                <th>Recommendations</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
+                        </thead>
+                        <tbody>
+                            {savedResults.map((result, index) => (
+                                <tr key={index}>
+                                    <td>{result.prediction}</td>
+                                    <td>
+                                        {result.recommendations.map((rec, idx) => (
+                                            <div key={idx} className="recommendation-item">
+                                                <h4>Treatment Pack:</h4>
+                                                <p>{rec.treatmentPack}</p>
+
+                                                <h4>Ingredients:</h4>
+                                                <p>{rec.ingredients}</p>
+
+                                                <h4>How To Do:</h4>
+                                                <p>{rec.howToDo}</p>
+
+                                                <div className="user-feedback">
+                                                    <h4>User Feedback:</h4>
+                                                    <ul>
+                                                        {rec.userFeedback.map((feedback, fIdx) => (
+                                                            <li key={fIdx}>{feedback}</li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </div>
         </div>
     );
 };

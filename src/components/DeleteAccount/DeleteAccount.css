@@ -2,13 +2,17 @@
     padding: 40px;
     text-align: center;
     margin-left: 150px;
-    margin-top: 85px;
-    height: 400px;
+    margin-top: 80px;
+    height: 405px;
     align-items: center;
 }
 
 .delete_title{
-    margin-bottom: 80px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
 }
 
 .delete-account-delete-btn {
