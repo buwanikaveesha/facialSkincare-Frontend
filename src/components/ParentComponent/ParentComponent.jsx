@@ -30,7 +30,7 @@ const ParentComponent = () => {
     return (
         <div>
             <Navbar userProfilePhoto={userProfilePhoto} />
-            <AccountSettings setUserProfilePhoto={setUserProfilePhoto} /> {/* Pass the setter here */}
+            <AccountSettings setUserProfilePhoto={setUserProfilePhoto} />
         </div>
     );
 };

@@ -23,8 +23,6 @@ const DeleteAccount = () => {
 
             setMessage('Your account has been successfully deleted.');
             localStorage.removeItem('token');
-            localStorage.removeItem('hasAgreed');
-            localStorage.removeItem('profilePhoto');
 
         } catch (err) {
             console.error('Error deleting account:', err);

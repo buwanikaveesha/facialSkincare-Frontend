@@ -47,7 +47,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
             return;
         }
 
-        setError(''); // Clear any previous errors
+        setError('');
         setPrediction('');
         setRecommendations([]);
         setCurrentIndex(0);
@@ -249,7 +249,7 @@ const PhotoUpload = ({ onStartAnalysis }) => {
                             accept="image/*"
                             className="file-input"
                             style={{ display: "none" }}
-                            disabled={!isLoggedIn} // Disable the input if not logged in
+                            disabled={!isLoggedIn}
                         />
                     </div>
 

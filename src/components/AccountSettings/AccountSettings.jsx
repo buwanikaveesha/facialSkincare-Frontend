@@ -10,9 +10,7 @@ const AccountSettings = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [editedUser, setEditedUser] = useState({});
     const [error, setError] = useState(null);
-    const [photoPreview, setPhotoPreview] = useState(null);
     const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
-    const [profileDetail, setProfileDetail] = useState();
 
     useEffect(() => {
         const fetchUserData = async () => {

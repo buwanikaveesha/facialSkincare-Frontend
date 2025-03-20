@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Navbar.css";
 
 const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfilePhoto, setUserProfilePhoto] = useState(null);
   const navigate = useNavigate();
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-  // Check login status when component mounts and when `isUserLoggedIn` updates
   useEffect(() => {
     const checkLoginStatus = () => {
       const token = localStorage.getItem("token");
@@ -16,31 +17,36 @@ const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
     };
 
     checkLoginStatus();
-
-    // Listen for localStorage changes (useful for multi-tab scenarios)
     window.addEventListener("storage", checkLoginStatus);
     return () => window.removeEventListener("storage", checkLoginStatus);
   }, []);
 
-  // Fetch profile photo when user is logged in
   useEffect(() => {
-    if (isLoggedIn) {
-      const storedProfilePhoto = localStorage.getItem("profilePhoto");
-      if (storedProfilePhoto) {
-        const img = new Image();
-        img.src = storedProfilePhoto;
-        img.onload = () => setUserProfilePhoto(storedProfilePhoto);
-        img.onerror = () => setUserProfilePhoto(null);
+    const fetchUserProfilePhoto = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        const response = await axios.get(`${apiUrl}/api/users/profile`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        setUserProfilePhoto(response.data.profile_img || null);
+      } catch (error) {
+        console.error("Error fetching user profile photo:", error);
+        setUserProfilePhoto(null);
       }
+    };
+
+    if (isLoggedIn) {
+      fetchUserProfilePhoto();
     } else {
       setUserProfilePhoto(null);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, apiUrl]);
 
-  // Handle user logout
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("hasAgreed");
     setIsLoggedIn(false);
     setIsUserLoggedIn(false);
     navigate("/");
@@ -85,8 +91,6 @@ const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
             Login
           </button>
         )}
-		
-		
       </div>
     </nav>
   );
