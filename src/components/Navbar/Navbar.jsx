@@ -64,6 +64,7 @@ const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
         <Link to="/features">Features</Link>
         <Link to="/howToDo">How it Works</Link>
         <Link to="/faq">FAQ</Link>
+        <Link to="/contactUs">Contact Us</Link>
       </div>
 
       <div className="navbar-actions">

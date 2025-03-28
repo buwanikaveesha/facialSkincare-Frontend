@@ -4,6 +4,7 @@ import HowToDo from "../HowToDo/HowToDo";
 import Features from "../Features/Features";
 import "./MainPage.css";
 import FAQ from "../FAQ/FAQ"
+import ContactUs from "../ContactUs/ContactUs";
 
 const MainPage = () => {
     return (
@@ -12,6 +13,7 @@ const MainPage = () => {
             <Features />
             <HowToDo />
             <FAQ />
+            <ContactUs />
         </div>
     );
 };

@@ -16,6 +16,7 @@ import ParentComponent from "./components/ParentComponent/ParentComponent";
 import PhotoUpload from "./components/PhotoUpload/PhotoUpload";
 import Signup from "./components/Signup/Signup";
 import StartAnalysis from "./components/StartAnalysis/StartAnalysis";
+import ContactUs from "./components/ContactUs/ContactUs";
 
 const App = () => {
 
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/deleteAccount" element={<DeleteAccount />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/History" element={<History />} />
+        <Route path="/contactUs" element={<ContactUs />} />
       </Routes>
       <Footer />
     </>
