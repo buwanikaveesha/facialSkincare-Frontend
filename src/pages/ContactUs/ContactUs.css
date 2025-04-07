@@ -5,33 +5,28 @@
   color: #333;
 }
 
-.contact-container{
+.contact-container {
   align-items: center;
 }
 
 .contact {
-  /* display: flex; */
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   background: #fff;
   text-align: center;
+  min-height: auto;
 }
 
 .contact-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
+  margin-bottom: 2rem;
 }
 
 .contact-right form {
-  max-width: 80%;
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  padding-bottom: 1rem;
 }
 
 form input,
@@ -40,7 +35,7 @@ form textarea {
   border: 1px solid #ccc;
   outline: none;
   background: #f3f3f3;
-  padding: 15px;
+  padding: 12px;
   margin: 15px auto;
   color: #333;
   font-size: 18px;
@@ -79,4 +74,56 @@ form .btn2:hover {
   color: green;
   text-align: center;
   margin-top: 2px;
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  form input,
+  form textarea {
+    width: 80%;
+    font-size: 16px;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  form .btn2 {
+    font-size: 0.95rem;
+    padding: 14px 22px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .contact {
+    padding: 1rem 0.5rem;
+  }
+
+  .heading {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  form input,
+  form textarea {
+    width: 90%;
+    font-size: 15px;
+    padding: 12px;
+    margin: 10px auto;
+  }
+
+  form .btn2 {
+    width: 100px;
+    font-size: 0.9rem;
+    padding: 12px 20px;
+  }
+
+  #msg {
+    font-size: 14px;
+  }
 }
