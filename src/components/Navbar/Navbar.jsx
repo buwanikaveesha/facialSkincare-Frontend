@@ -13,7 +13,9 @@ const Navbar = () => {
   const { token, removeFromSession } = useContext(AuthContext);
 
   useEffect(() => {
-    GetProfile();
+    if (token) {
+      GetProfile();
+    }
   }, [token]);
 
   const GetProfile = async () => {
@@ -25,7 +27,7 @@ const Navbar = () => {
       const data = response.data;
       setProfileDetail(data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching profile:", error);
     }
   };
 
@@ -48,7 +50,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="navbar-links">
+      <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
         <Link to="/">Home</Link>
         <Link to="/features">Features</Link>
         <Link to="/howToDo">How it Works</Link>
@@ -63,7 +65,7 @@ const Navbar = () => {
               <div className="profile-icon">
                 {profileDetail?.profile_img ? (
                   <img
-                    src={profileDetail?.profile_img}
+                    src={profileDetail.profile_img}
                     alt="Profile"
                     className="profile-icon-img"
                   />
@@ -72,7 +74,6 @@ const Navbar = () => {
                 )}
               </div>
             </Link>
-
             <span className="logout-text-link" onClick={handleLogout}>
               Logout
             </span>
