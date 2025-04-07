@@ -51,7 +51,7 @@
 }
 
 .step-icon {
-    width: 200px;
+    width: 150px;
     height: auto;
     margin-bottom: 10px;
 }
@@ -86,7 +86,7 @@
     }
 
     .step-icon {
-        width: 150px;
+        width: 100px;
     }
 
     .HowToDo-container h1 {
@@ -107,7 +107,7 @@
     }
 
     .step-icon {
-        width: 120px;
+        width: 50px;
     }
 
     .HowToDo-container h1 {
