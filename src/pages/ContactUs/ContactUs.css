@@ -111,14 +111,14 @@ form .btn2:hover {
 
   form input,
   form textarea {
-    width: 90%;
-    font-size: 15px;
+    width: 100%;
+    font-size: 14px;
     padding: 12px;
     margin: 10px auto;
   }
 
   form .btn2 {
-    width: 100px;
+    width: 90px;
     font-size: 0.9rem;
     padding: 12px 20px;
   }
