@@ -1,19 +1,9 @@
-.history-container {
+.results-grid {
     display: flex;
-    /* flex-direction: column; */
-    min-height: 100vh;
+    flex-wrap: wrap;
+    gap: 20px;
     padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-.history-content {
-    flex-grow: 1;
-}
-
-.history-container p{
-    text-align: center;
-    margin-top: 50px;
-    font-size: 1.5rem;
+    justify-content: center;
 }
 
 .history_title {
@@ -24,52 +14,56 @@
     text-align: center;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.back-icon {
     margin-top: 20px;
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-td {
-    vertical-align: top;
-}
-
-.recommendations {
+    margin-left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-icon:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.result-card {
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: 350px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    transition: transform 0.2s ease-in-out;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+}
+
+.result-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 .recommendation-item {
+    background: #f7f7f7;
     padding: 10px;
-    background-color: #f7f7f7;
     border-radius: 5px;
     border: 1px solid #ddd;
+    margin-top: 10px;
 }
 
 .recommendation-item h4 {
-    margin: 0;
     font-size: 16px;
     color: #333;
+    margin-bottom: 5px;
 }
 
 .user-feedback {
@@ -78,27 +72,16 @@ td {
 }
 
 .user-feedback ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    padding-left: 20px;
 }
 
 .user-feedback li {
     margin-bottom: 6px;
 }
 
-.error-message {
-    color: red;
-    font-size: 16px;
-    margin-top: 20px;
-}
-
 .no-results-message {
     font-size: 18px;
     color: #888;
     margin-top: 20px;
-}
-
-.sidebar {
-    margin-bottom: 20px;
+    text-align: center;
 }

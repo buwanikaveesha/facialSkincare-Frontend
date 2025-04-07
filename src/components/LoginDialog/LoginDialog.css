@@ -1,0 +1,91 @@
+.login-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.login-dialog-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  height: 350px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: scaleUp 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+}
+
+.login-dialog-close-icon {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.login-dialog-close-icon:hover {
+  transform: rotate(90deg);
+}
+
+.login-dialog-title {
+  font-size: 34px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.login-dialog-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.login-dialog-button {
+  display: block;
+  background: #3bb19b;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+  width: 200px;
+}
+
+.login-dialog-button:hover {
+  background: #2f9482;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}

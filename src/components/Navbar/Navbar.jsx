@@ -1,80 +1,69 @@
-import React, { useEffect, useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { FaUserCircle, FaBars } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest";
+import { jwtDecode } from "jwt-decode";
 import "./Navbar.css";
 
-const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userProfilePhoto, setUserProfilePhoto] = useState(null);
-  const navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const Navbar = () => {
+  const [profileDetail, setProfileDetail] = useState();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const { token, removeFromSession } = useContext(AuthContext);
 
   useEffect(() => {
-    const checkLoginStatus = () => {
-      const token = localStorage.getItem("token");
-      setIsLoggedIn(!!token);
-    };
+    GetProfile();
+  }, [token]);
 
-    checkLoginStatus();
-    window.addEventListener("storage", checkLoginStatus);
-    return () => window.removeEventListener("storage", checkLoginStatus);
-  }, []);
+  const GetProfile = async () => {
+    try {
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken._id;
 
-  useEffect(() => {
-    const fetchUserProfilePhoto = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
-        const response = await axios.get(`${apiUrl}/api/users/profile`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-
-        setUserProfilePhoto(response.data.profile_img || null);
-      } catch (error) {
-        console.error("Error fetching user profile photo:", error);
-        setUserProfilePhoto(null);
-      }
-    };
-
-    if (isLoggedIn) {
-      fetchUserProfilePhoto();
-    } else {
-      setUserProfilePhoto(null);
+      const response = await apiRequest.get(`/user/get-profile/${userId}`);
+      const data = response.data;
+      setProfileDetail(data);
+    } catch (error) {
+      console.log(error);
     }
-  }, [isLoggedIn, apiUrl]);
+  };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    setIsUserLoggedIn(false);
-    navigate("/");
+    removeFromSession();
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${menuOpen ? "show-menu" : ""}`}>
       <div className="navbar-logo">
         <Link to="/" className="logo-link">
-          <h1>FacialCure</h1>
+          <h1 className="navbar-title">FacialCure🌿</h1>
         </Link>
+        <div className="hamburger" onClick={toggleMenu}>
+          <FaBars />
+        </div>
       </div>
+
       <div className="navbar-links">
         <Link to="/">Home</Link>
         <Link to="/features">Features</Link>
         <Link to="/howToDo">How it Works</Link>
         <Link to="/faq">FAQ</Link>
-        <Link to="/contactUs">Contact Us</Link>
+        <Link to="/contact-us">Contact Us</Link>
       </div>
 
       <div className="navbar-actions">
-        {isLoggedIn ? (
+        {token ? (
           <>
-            <Link to="/accountSettings">
+            <Link to={`/profile/${profileDetail?._id}`}>
               <div className="profile-icon">
-                {userProfilePhoto ? (
+                {profileDetail?.profile_img ? (
                   <img
-                    src={userProfilePhoto}
+                    src={profileDetail?.profile_img}
                     alt="Profile"
                     className="profile-icon-img"
                   />
@@ -83,14 +72,15 @@ const Navbar = ({ isUserLoggedIn, setIsUserLoggedIn }) => {
                 )}
               </div>
             </Link>
-            <button className="login_home_btn" onClick={handleLogout}>
+
+            <span className="logout-text-link" onClick={handleLogout}>
               Logout
-            </button>
+            </span>
           </>
         ) : (
-          <button className="login_home_btn" onClick={() => navigate("/login")}>
+          <Link to="/login" className="login-text-link">
             Login
-          </button>
+          </Link>
         )}
       </div>
     </nav>

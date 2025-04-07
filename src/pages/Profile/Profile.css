@@ -1,0 +1,19 @@
+.profile-page-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.profile-page-title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.profile-page-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+

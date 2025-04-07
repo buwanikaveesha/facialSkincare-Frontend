@@ -93,16 +93,17 @@
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #17c3c3;
+    background-color: #198040;
     border: none;
     border-radius: 5.7rem;
     cursor: pointer;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 180px;
+    width: 120px;
     height: 50px;
     font-weight: bold;
+    /* border: 2px solid black; */
 }
 
 .instruction_cta-button:hover {

@@ -74,7 +74,7 @@ const Instructions = () => {
                         &gt;
                     </div>
 
-                    <Link to="/photoUpload">
+                    <Link to="/analysis">
                         <button className="instruction_cta-button">Got It</button>
                     </Link>
                 </div>

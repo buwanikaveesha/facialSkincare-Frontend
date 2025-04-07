@@ -1,0 +1,262 @@
+.skincare-container {
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+  padding: 0;
+  color: #2b2b2b;
+}
+
+.skincare-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  position: static;
+  height: 400px;
+}
+
+.header-text {
+  flex: 1;
+  z-index: 2;
+  text-align: left;
+  color: #ffffff;
+  padding: 60px;
+  border-radius: 10px;
+  margin-left: 100px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.header-text h1 {
+  font-size: 2.5rem;
+  color: #2b2b2b;
+  font-weight: bold;
+}
+
+.facial_topic {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.analysis-button {
+  background-color: #198040;
+  color: white;
+  padding: 0.8em 1.5em;
+  border: 0.15em solid rgba(241, 172, 23, 0.5);
+  border-radius: 0.5em;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 1em #0D4715;
+  letter-spacing: 0.1em;
+  margin-top: 2vh;
+  animation: popUp 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* .analysis-button:hover {
+  background-color: #004d00;
+  border-color: #ffcc00;
+  color: #ffcc00;
+  box-shadow: 0px 0px 15px #ffcc00;
+  transform: scale(1.05);
+  } */
+
+img .header-image {
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%;
+}
+
+.header-image {
+  background-position: 50%;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 100px;
+  z-index: -10;
+}
+
+.header-image img {
+  width: 100%;
+}
+
+.face-mapping-section {
+  background-color: #ffffff;
+  text-align: center;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}
+
+.face-mapping-section h2 {
+  color: #333;
+  font-size: 1.7rem;
+  margin-bottom: 5px;
+}
+
+.home_para {
+  font-size: 18px;
+  line-height: 28px;
+  max-width: 808px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.face-mapping-section a {
+  color: #005C43;
+  text-decoration: none;
+}
+
+.face-mapping-section a:hover {
+  text-decoration: underline;
+}
+
+.features-section {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+}
+
+.how-to-do-section {
+  padding: 50px 20px;
+  background-color: #ffffff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .skincare-header {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-text {
+    margin: 0;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .header-text h1 {
+    font-size: 2rem;
+  }
+
+  .home_para {
+    padding-top: 20px;
+    max-width: 95%;
+  }
+
+  .header-image {
+    position: static;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .header-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .analysis-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .skincare-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  .header-text {
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+  }
+
+  .header-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .home_para {
+    font-size: 16px;
+    padding-top: 20px;
+  }
+
+  .analysis-button {
+    width: 90%;
+    max-width: 300px;
+    margin: 20px auto 0 auto;
+    font-size: 1.1rem;
+  }
+
+  .header-image {
+    margin-top: 10px;
+  }
+
+  .header-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-text {
+    padding: 10px;
+  }
+
+  .header-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .face-mapping-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .home_para {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 20px 10px;
+  }
+
+  .analysis-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+
+  .features-section,
+  .how-to-do-section {
+    padding: 20px 10px;
+  }
+
+  .header-image {
+    margin-top: 0;
+  }
+
+  .header-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
