@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaUserCircle, FaBars } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
@@ -33,35 +33,40 @@ const Navbar = () => {
 
   const handleLogout = () => {
     removeFromSession();
+    setMenuOpen(false); // close menu on logout
   };
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
 
+  const handleLinkClick = () => {
+    setMenuOpen(false); // close menu when link is clicked
+  };
+
   return (
     <nav className={`navbar ${menuOpen ? "show-menu" : ""}`}>
       <div className="navbar-logo">
-        <Link to="/" className="logo-link">
+        <Link to="/" className="logo-link" onClick={handleLinkClick}>
           <h1 className="navbar-title">FacialCure🌿</h1>
         </Link>
         <div className="hamburger" onClick={toggleMenu}>
-          <FaBars />
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
 
       <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
-        <Link to="/">Home</Link>
-        <Link to="/features">Features</Link>
-        <Link to="/howToDo">How it Works</Link>
-        <Link to="/faq">FAQ</Link>
-        <Link to="/contact-us">Contact Us</Link>
+        <Link to="/" onClick={handleLinkClick}>Home</Link>
+        <Link to="/features" onClick={handleLinkClick}>Features</Link>
+        <Link to="/howToDo" onClick={handleLinkClick}>How it Works</Link>
+        <Link to="/faq" onClick={handleLinkClick}>FAQ</Link>
+        <Link to="/contact-us" onClick={handleLinkClick}>Contact Us</Link>
       </div>
 
       <div className="navbar-actions">
         {token ? (
           <>
-            <Link to={`/profile/${profileDetail?._id}`}>
+            <Link to={`/profile/${profileDetail?._id}`} onClick={handleLinkClick}>
               <div className="profile-icon">
                 {profileDetail?.profile_img ? (
                   <img
@@ -79,7 +84,7 @@ const Navbar = () => {
             </span>
           </>
         ) : (
-          <Link to="/login" className="login-text-link">
+          <Link to="/login" className="login-text-link" onClick={handleLinkClick}>
             Login
           </Link>
         )}
