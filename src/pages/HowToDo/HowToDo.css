@@ -4,7 +4,7 @@
     text-align: center;
     padding: 2rem 1rem;
     font-family: Arial, sans-serif;
-    height: 540px;
+    height: auto;
 }
 
 .HowToDo-container h1 {
@@ -19,6 +19,8 @@
     justify-content: space-around;
     margin: 30px 0;
     background: #f9f9f9;
+    flex-wrap: wrap;
+    gap: 1rem;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -75,4 +77,55 @@
     background: #146031;
     color: #fff;
     transform: rotate(-10deg);
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .HowToDo_step {
+        width: 45%;
+    }
+
+    .step-icon {
+        width: 150px;
+    }
+
+    .HowToDo-container h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .HowToDo_steps {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .HowToDo_step {
+        width: 90%;
+        margin-bottom: 1.5rem;
+    }
+
+    .step-icon {
+        width: 120px;
+    }
+
+    .HowToDo-container h1 {
+        font-size: 1.3rem;
+    }
+
+    .HowToDo_step h3 {
+        font-size: 16px;
+    }
+
+    .HowToDo_step p {
+        font-size: 13px;
+    }
+
+    .process-count {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 14px;
+    }
 }
