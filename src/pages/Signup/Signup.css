@@ -99,7 +99,7 @@
 
 @media (max-width: 1024px) {
   .signup_form_container {
-    width: 95%;
+    width: 100%;
     height: auto;
     flex-direction: column;
   }
@@ -118,7 +118,7 @@
 
   .signup_input,
   .signup_error_msg {
-    width: 90%;
+    width: 100%;
   }
 
   .form_container h1,
