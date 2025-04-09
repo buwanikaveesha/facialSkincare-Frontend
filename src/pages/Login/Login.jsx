@@ -15,7 +15,7 @@ const Login = () => {
 
   const userAuthServer = async () => {
     try {
-      const res = await apiRequest.post("api/auth/login", {
+      const res = await apiRequest.post("/auth/login", {
         email,
         password,
       });
