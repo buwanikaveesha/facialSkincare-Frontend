@@ -53,3 +53,34 @@
   color: #555;
   line-height: 1.5;
 }
+
+/* Responsive for tablets */
+@media (max-width: 1024px) {
+  .features {
+    width: 45%; /* two items per row */
+  }
+}
+
+/* Responsive for mobile devices */
+@media (max-width: 600px) {
+  .feature-title {
+    font-size: 1.4rem;
+  }
+
+  .features {
+    width: 100%; /* one item per row */
+    padding: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+
+  .feature-topic {
+    font-size: 1.1rem;
+  }
+
+  .feature-description {
+    font-size: 0.95rem;
+  }
+}
