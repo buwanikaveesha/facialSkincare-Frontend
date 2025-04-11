@@ -155,7 +155,7 @@
 @media (max-width: 480px) {
   .form_container h1,
   .right_login h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .input_login,
@@ -165,6 +165,7 @@
 
   .white_btn_login,
   .green_btn_login {
-    width: 120px;
+    width: 80px;
+    margin-bottom: 10px;
   }
 }

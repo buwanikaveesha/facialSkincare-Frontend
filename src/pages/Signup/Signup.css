@@ -156,9 +156,9 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .form_container h1 {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .left_signup h1 {
@@ -172,6 +172,7 @@
 
   .white_btn_signup,
   .green_btn_signup {
-    width: 120px;
+    width: 80px;
+    margin-bottom: 10px;
   }
 }
