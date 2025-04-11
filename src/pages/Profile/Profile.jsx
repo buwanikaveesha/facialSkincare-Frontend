@@ -28,6 +28,9 @@ const Profile = () => {
 
   return (
     <div>
+      <button className="back-icon" onClick={() => navigate("/analysis")}>
+        <IoArrowBack size={24} /> Back
+      </button>
       <div className="profile-page-container">
         <h1 className="profile-page-title">My Profile</h1>
         <div className="profile-page-card">
