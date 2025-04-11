@@ -140,7 +140,7 @@
 
   .white_btn_login,
   .green_btn_login {
-    width: 150px;
+    width: 100%;
     font-size: 13px;
     padding: 10px 0;
   }
@@ -152,7 +152,7 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .form_container h1,
   .right_login h1 {
     font-size: 20px;
