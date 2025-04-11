@@ -152,7 +152,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 400px) {
   .form_container h1,
   .right_login h1 {
     font-size: 22px;
