@@ -57,7 +57,7 @@
 /* Responsive for tablets */
 @media (max-width: 1024px) {
   .features {
-    width: 45%; /* two items per row */
+    width: 45%;
   }
 }
 
@@ -68,7 +68,7 @@
   }
 
   .features {
-    width: 100%; /* one item per row */
+    width: 70%;
     padding: 1rem;
   }
 
