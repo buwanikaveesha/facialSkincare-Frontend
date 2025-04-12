@@ -103,7 +103,6 @@
     width: 120px;
     height: 50px;
     font-weight: bold;
-    /* border: 2px solid black; */
 }
 
 .instruction_cta-button:hover {
@@ -112,4 +111,59 @@
 
 .instruction_carousel a {
     text-decoration: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .instruction_carousel {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .instruction_arrow {
+        font-size: 28px;
+    }
+
+    .instruction_content h2 {
+        font-size: 18px;
+    }
+
+    .instruction_content p {
+        font-size: 15px;
+    }
+
+    .instruction_cta-button {
+        width: 100px;
+        height: 45px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .instruction_carousel {
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    .instruction_arrow.left {
+        left: 10px;
+    }
+
+    .instruction_arrow.right {
+        right: 10px;
+    }
+
+    .instruction_content h2 {
+        font-size: 16px;
+    }
+
+    .instruction_content p {
+        font-size: 14px;
+    }
+
+    .instruction_cta-button {
+        width: 100px;
+        height: 40px;
+        font-size: 13px;
+    }
 }
