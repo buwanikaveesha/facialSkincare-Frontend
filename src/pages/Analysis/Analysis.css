@@ -200,3 +200,84 @@
 .alert {
   color: red;
 }
+
+/* Tablet view (768px - 1024px) */
+@media (max-width: 1024px) {
+  .photo_upload-container {
+    flex-direction: column;
+    max-width: 90%;
+  }
+
+  .photo_upload-image-wrapper {
+    width: 350px;
+    height: 350px;
+    margin-top: 40px;
+  }
+
+  .photo_upload-info-section {
+    padding: 30px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .photo_upload-info-title {
+    font-size: 1.6rem;
+  }
+
+  .photo_upload-info-description {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile view (up to 767px) */
+@media (max-width: 767px) {
+  .photo_upload-container {
+    flex-direction: column;
+    max-width: 95%;
+  }
+
+  .photo_upload-image-wrapper {
+    width: 250px;
+    height: 250px;
+    margin-top: 30px;
+  }
+
+  .photo_upload-skin-coach-title {
+    font-size: 2rem;
+  }
+
+  .photo_upload-info-section {
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .photo_upload-info-title {
+    font-size: 1.4rem;
+  }
+
+  .photo_upload-info-description {
+    font-size: 0.9rem;
+  }
+
+  .upload-button,
+  .terms-button,
+  .table-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .image-preview img {
+    max-width: 100%;
+  }
+
+  .table {
+    overflow-x: auto;
+    display: block;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
