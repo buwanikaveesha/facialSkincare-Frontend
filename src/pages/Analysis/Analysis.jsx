@@ -50,7 +50,7 @@ const Analysis = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_AI_SERVER_DOMAIN}`,
+        `${import.meta.env.VITE_AI_SERVER_DOMAIN}/predict`,
         formDataUpload,
         {
           headers: {
