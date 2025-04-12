@@ -3,6 +3,7 @@ import AuthContext from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 import { jwtDecode } from "jwt-decode";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import { IoArrowBack } from "react-icons/io5";
 import "./Profile.css";
 
 const Profile = () => {
