@@ -64,3 +64,30 @@
 .profile-card-buttons button:last-child:hover {
   background-color: #D32F2F;
 }
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 15px;
+  }
+
+  .profile-card-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .profile-card-buttons button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card-profile-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile-card-buttons button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
