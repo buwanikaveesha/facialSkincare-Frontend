@@ -56,3 +56,41 @@
   background: red;
   color: white;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .delete-modal-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .delete-modal-title {
+    font-size: 18px;
+  }
+
+  .delete-modal-body {
+    font-size: 14px;
+  }
+
+  .delete-modal-footer {
+    gap: 15px;
+  }
+
+  .delete-modal-cancel-btn,
+  .delete-model-delete-btn {
+    font-size: 14px;
+    padding: 10px;
+    min-width: unset;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .delete-modal-title {
+    font-size: 16px;
+  }
+
+  .delete-modal-body {
+    font-size: 13px;
+  }
+}
