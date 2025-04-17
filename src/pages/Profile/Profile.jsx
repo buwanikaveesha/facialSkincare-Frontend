@@ -4,11 +4,13 @@ import apiRequest from "../../lib/apiRequest";
 import { jwtDecode } from "jwt-decode";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import { IoArrowBack } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 import "./Profile.css";
 
 const Profile = () => {
   const [profileDetail, setProfileDetail] = useState(null);
   const { token } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const GetProfile = async () => {
     try {
