@@ -85,3 +85,40 @@
     margin-top: 20px;
     text-align: center;
 }
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .result-card {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .result-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .results-grid {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .history_title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .back-icon {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .result-card h3,
+    .recommendation-item h4 {
+        font-size: 16px;
+    }
+
+    .no-results-message {
+        font-size: 16px;
+    }
+}
