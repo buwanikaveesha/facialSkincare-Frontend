@@ -17,33 +17,3 @@
   margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-  .profile-page-title {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-page-title {
-    font-size: 1.3rem;
-  }
-}
-
-.profile-page-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-@media (max-width: 480px) {
-  .profile-page-container {
-    margin-top: 30px;
-  }
-
-  .profile-page-card {
-    flex-direction: column;
-  }
-}
