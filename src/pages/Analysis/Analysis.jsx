@@ -50,7 +50,7 @@ const Analysis = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_AI_SERVER_DOMAIN}/predict`,
+        import.meta.env.VITE_AI_SERVER_DOMAIN,
         formDataUpload,
         {
           headers: {
@@ -135,30 +135,30 @@ const Analysis = () => {
       toast.error("Please log in to save results.");
       return;
     }
-  
+
     if (!prediction || recommendations.length === 0) {
       toast.error("No prediction or recommendations to save.");
       return;
     }
-  
+
     const selectedRecommendation = recommendations[currentIndex];
-  
+
     const formattedRecommendation = {
       treatmentPack: selectedRecommendation["Treatment Pack"],
       ingredients: selectedRecommendation["Ingredients"],
       howToDo: selectedRecommendation["How to do"],
     };
-  
+
     try {
       const decodedToken = jwtDecode(token);
       let userEmail = decodedToken.email;
-  
+
       const resultToSave = {
         userEmail: userEmail,
         prediction: prediction,
         recommendations: [formattedRecommendation],
       };
-  
+
       const response = await apiRequest.post(
         "/result/save-result",
         resultToSave,
@@ -166,7 +166,7 @@ const Analysis = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-  
+
       if (response.data && response.data.success) {
         toast.success("Selected result saved successfully!");
       } else {
@@ -177,7 +177,7 @@ const Analysis = () => {
       toast.error("An error occurred while saving results.");
     }
   };
-  
+
 
   return (
     <>
@@ -279,7 +279,7 @@ const Analysis = () => {
                             <td>{rec["How to do"]}</td>
                             <td>
                               {rec["UserFeedback"] &&
-                              rec["UserFeedback"].length > 0 ? (
+                                rec["UserFeedback"].length > 0 ? (
                                 <ul>
                                   {rec["UserFeedback"].map(
                                     (feedback, index) => (
