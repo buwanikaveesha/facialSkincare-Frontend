@@ -130,47 +130,6 @@ const Analysis = () => {
     }
   };
 
-  // const handleSaveResults = async () => {
-  //   if (!token) {
-  //     toast.error("Please log in to save results.");
-  //     return;
-  //   }
-
-  //   const formattedRecommendations = recommendations.map((rec) => ({
-  //     treatmentPack: rec["Treatment Pack"],
-  //     ingredients: rec["Ingredients"],
-  //     howToDo: rec["How to do"],
-  //   }));
-
-  //   try {
-  //     const decodedToken = jwtDecode(token);
-  //     let userEmail = decodedToken.email;
-
-  //     const resultsToSave = {
-  //       userEmail: userEmail,
-  //       prediction: prediction,
-  //       recommendations: formattedRecommendations,
-  //     };
-
-  //     const response = await apiRequest.post(
-  //       "/result/save-result",
-  //       resultsToSave,
-  //       {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       }
-  //     );
-
-  //     if (response.data && response.data.success) {
-  //       toast.success("Results saved successfully!");
-  //     } else {
-  //       toast.error("Failed to save results.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error saving results:", error);
-  //     toast.error("An error occurred while saving results.");
-  //   }
-  // };
-
   const handleSaveResults = async () => {
     if (!token) {
       toast.error("Please log in to save results.");
