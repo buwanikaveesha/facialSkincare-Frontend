@@ -64,6 +64,7 @@
 .profile-card-buttons button:last-child:hover {
   background-color: #D32F2F;
 }
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .profile-card {
@@ -81,13 +82,19 @@
 }
 
 @media (max-width: 480px) {
+  .profile-card {
+    width: 320px;
+  }
+
   .profile-card-profile-image {
     width: 80px;
     height: 80px;
   }
 
-  .profile-card-buttons button {
+  .profile-card-buttons {
     font-size: 0.9rem;
     padding: 8px 12px;
+    margin-top: 10px;
+    width: 180px;
   }
 }
