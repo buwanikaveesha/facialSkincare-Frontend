@@ -88,3 +88,65 @@
 .edit-profile-buttons button:last-child:hover {
   background-color: #d32f2f;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .edit-profile-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .edit-profile-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .edit-profile-row {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .edit-profile-row label {
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  .edit-profile-row input {
+    width: 100%;
+  }
+
+  .edit-profile-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .edit-profile-buttons button {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-profile-card {
+    padding: 15px;
+    width: 300px;
+  }
+
+  .edit-profile-image {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+  }
+
+  .edit-profile-buttons button {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .edit-profile-row input {
+    width: 100%;
+  }
+}
