@@ -256,6 +256,7 @@ const Analysis = () => {
                 {recommendations.length > 0 && (
                   <div className="recommendations mt-3">
                     <h3>Treatment Recommendations:</h3>
+                    <div className="table-responsive">
                     <table className="table table-striped table-bordered mt-2">
                       <thead className="table-dark">
                         <tr>
@@ -300,6 +301,7 @@ const Analysis = () => {
                         ))}
                       </tbody>
                     </table>
+                    </div>
 
                     <div className="button-container">
                       <button className="upload-button" onClick={handleNext}>

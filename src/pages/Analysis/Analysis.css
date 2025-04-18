@@ -280,4 +280,19 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  .results {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .results h3 {
+    font-size: 1.2rem;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
