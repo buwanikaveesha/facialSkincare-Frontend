@@ -92,7 +92,7 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   .edit-profile-card {
-    width: 90%;
+    width: 400px;
     padding: 20px;
   }
 
@@ -114,7 +114,7 @@
   }
 
   .edit-profile-row input {
-    width: 100%;
+    width: 110%;
   }
 
   .edit-profile-buttons {
